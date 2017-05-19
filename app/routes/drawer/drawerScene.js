@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { DrawerNavigator } from 'react-navigation'
 
 class DrawerScene extends Component {
     render () {
@@ -12,6 +13,10 @@ class DrawerScene extends Component {
         );
     }
 }
+
+const drawerNavigator = DrawerNavigator({
+  Home: { screen: DrawerScene }
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -27,4 +32,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default DrawerScene;
+export default drawerNavigator;

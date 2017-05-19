@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class ReactMapScene extends Component {
+class SettingsScene extends Component {
 
     render () {
         const { errorToken } = this.props;
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
-                  Welcome to ReactMap!
+                  Welcome to Settings!
                 </Text>
                 <Text> {errorToken} </Text>
             </View>
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ReactMapScene;
+export default SettingsScene;

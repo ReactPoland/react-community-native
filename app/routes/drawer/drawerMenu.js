@@ -26,7 +26,17 @@ const uiTheme = {
     constainer: {
       backgroundColor: '#333'
     }
+  },
+  drawerSection: {
+    container: {
+      backgroundColor: '#333333'
+    }
   }
+};
+const uiThemeSection = {
+  drawerSection: {container: {
+    backgroundColor: '#000000'
+  }}
 };
 
 export default class DrawerMenu extends Component {
@@ -42,23 +52,24 @@ export default class DrawerMenu extends Component {
         <Container>
           <StatusBar translucent />
           <Toolbar
-                    onLeftElementPress={() => this.props.navigation.navigate('DrawerClose')}
                     centerElement='Settings'
+                    onPress={() => {
+                      this.setState({ active: 'Settings' });
+                      this.props.navigation.navigate('Settings');
+                    }}
                   />
           <View style={styles.container}>
             <Drawer style={{ container: { backgroundColor: '#B38381' }}}>
               <View style={styles.userIco}>
                 <Text> ICON HERE </Text>
               </View>
-                <Drawer.Section
+                <Drawer.Section uiTheme={uiThemeSection}
                               style={{
                                   container: { backgroundColor: '#B38381' }
                               }}
                               divider
                               items={[
                                   {
-
-                                      label: '#0000ff',
                                       value: 'ReactWall',
                                       active: this.state.active == 'ReactWall',
                                       onPress: () => {

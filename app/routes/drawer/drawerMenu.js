@@ -47,11 +47,9 @@ export default class DrawerMenu extends Component {
                   />
           <View style={styles.container}>
             <Drawer style={{ container: { backgroundColor: '#B38381' }}}>
-              <View>
-              </View>
-              <Drawer.Header style={styles.container}>
+              <View style={styles.userIco}>
                 <Text> ICON HERE </Text>
-              </Drawer.Header>
+              </View>
                 <Drawer.Section
                               style={{
                                   container: { backgroundColor: '#B38381' }
@@ -59,6 +57,8 @@ export default class DrawerMenu extends Component {
                               divider
                               items={[
                                   {
+
+                                      label: '#0000ff',
                                       value: 'ReactWall',
                                       active: this.state.active == 'ReactWall',
                                       onPress: () => {
@@ -118,8 +118,10 @@ export default class DrawerMenu extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#B38381',
       },
+    userIco: {
+        height: 150,
+    },
     header: {
         backgroundColor: '#B38381',
       },

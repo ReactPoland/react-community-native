@@ -5,7 +5,8 @@ import {
     Text,
     StatusBar,
     View,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native'
 import { COLOR,  ThemeProvider, Toolbar, Drawer, Avatar } from 'react-native-material-ui'
 import Container from './container'
@@ -20,7 +21,7 @@ const uiTheme = {
   toolbar: {
     container: {
       backgroundColor: "#B38381",
-      height: 70,
+      height: 0,
     },
   },
   typography: {
@@ -34,7 +35,10 @@ const uiThemeSection = {
       accentColor: '#FFFFFF',
     },
 };
-
+const settingsIcon = (<Image
+  style={{marginLeft: 10, marginTop: 10, width: 40, height: 40,}}
+  source={{uri: 'http://www.myiconfinder.com/uploads/iconsets/128-128-03a6912f2105fa73cd2e7798bd0a7ffa-gear.png'}}
+/>)
 export default class DrawerMenu extends Component {
   constructor(props, context) {
     super(props, context);
@@ -47,18 +51,21 @@ export default class DrawerMenu extends Component {
       <ThemeProvider uiTheme={uiTheme}>
         <Container>
           <StatusBar translucent />
-          <Toolbar
-                    centerElement='Settings'
-                    onPress={() => {
-                      this.setState({ active: 'Settings' });
-                      this.props.navigation.navigate('Settings');
-                    }}
-                  />
+          <Toolbar />
           <View style={styles.container}>
             <Drawer style={{ container: { backgroundColor: '#B38381' }}}>
               <View style={styles.userIco}>
+                <TouchableOpacity onPress= {() => {
+                    this.setState({ active: 'Settings' });
+                    this.props.navigation.navigate('Settings');
+                  }}>
+                  <Image
+                    style={{marginLeft: 10, marginTop: 10, width: 40, height: 40,}}
+                    source={{uri: 'http://www.myiconfinder.com/uploads/iconsets/128-128-03a6912f2105fa73cd2e7798bd0a7ffa-gear.png'}}
+                  />
+                </TouchableOpacity>
                 <Image
-                  style={{marginLeft: 75, width: 200, height: 200, borderRadius: 150}}
+                  style={{position: 'absolute', marginTop: 15, marginLeft: 75, width: 200, height: 200, borderRadius: 150}}
                   source={{uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'}}
                 />
               </View>
@@ -130,7 +137,7 @@ const styles = StyleSheet.create({
         flex: 1,
       },
     userIco: {
-        height: 200,
+        height: 230,
     },
     header: {
         backgroundColor: '#B38381',

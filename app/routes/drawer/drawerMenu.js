@@ -9,34 +9,30 @@ import {
 } from 'react-native'
 import { COLOR,  ThemeProvider, Toolbar, Drawer, Avatar } from 'react-native-material-ui'
 import Container from './container'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const uiTheme = {
   palette: {
-    primaryColor: '#444444',
-    accentColor: '#FFFFFF',
+    primaryColor: '#000000',
+    accentColor: '#000',
+    canvasColor: '#B38381'
   },
   toolbar: {
     container: {
+      backgroundColor: "#B38381",
       height: 70,
-      paddingTop: 20,
     },
   },
-  avatar: {
-    constainer: {
-      backgroundColor: '#333'
-    }
-  },
-  drawerSection: {
-    container: {
-      backgroundColor: '#333333'
-    }
+  typography: {
+    display: 'flex',
+    justifyContent: 'center',
   }
 };
 const uiThemeSection = {
-  drawerSection: {container: {
-    backgroundColor: '#000000'
-  }}
+    palette: {
+      primaryColor: '#FFFFFFF',
+      accentColor: '#FFFFFF',
+    },
 };
 
 export default class DrawerMenu extends Component {
@@ -61,7 +57,10 @@ export default class DrawerMenu extends Component {
           <View style={styles.container}>
             <Drawer style={{ container: { backgroundColor: '#B38381' }}}>
               <View style={styles.userIco}>
-                <Text> ICON HERE </Text>
+                <Image
+                  style={{marginLeft: 75, width: 200, height: 200, borderRadius: 150}}
+                  source={{uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'}}
+                />
               </View>
                 <Drawer.Section uiTheme={uiThemeSection}
                               style={{
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
         flex: 1,
       },
     userIco: {
-        height: 150,
+        height: 200,
     },
     header: {
         backgroundColor: '#B38381',

@@ -4,7 +4,6 @@ import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../drawer/container';
 import { StackNavigator } from 'react-navigation';
 import GeneralAppInfo from '../settings/generalAppInfo/'
-import LogOut from './logOut'
 import UserInfo from './userInfo'
 import Login from '../login'
 
@@ -51,7 +50,7 @@ class SettingsScene extends Component {
                     <Switch/>
                   </View>
                 </View>
-                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('General')}
+                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('UserInfo')}
                   title="User Info">
                   <View>
                     <Text style={styles.textStyle}>
@@ -59,7 +58,7 @@ class SettingsScene extends Component {
                     </Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('UserInfo')}
+                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('General')}
                   title="User Info">
                   <View>
                     <Text style={styles.textStyle}>
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
   },
   touchableStyle: {
     height: 50,
-    width: 420,
+    width:  window.width,
     backgroundColor: '#bababa',
     display: 'flex',
     justifyContent: 'center',
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 380
+    width: window.width - 40,
   },
   textStyle: {
     fontSize: 20,

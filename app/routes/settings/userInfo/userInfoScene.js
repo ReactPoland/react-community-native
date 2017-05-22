@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../../drawer/container';
 import Icon from 'react-native-vector-icons/Ionicons';
 const myIcon = (<Icon name="bars" size={30} color="#900" />)
+const window = Dimensions.get('window');
 const uiTheme = {
   palette: {
     primaryColor: COLOR.grey500,
@@ -37,8 +38,46 @@ class reactWallSceen extends Component {
                 centerElement="User"
               />
               <View style={styles.container}>
-                <Text style={styles.welcome}>
-                </Text>
+                <View style={styles.touchableStyle}>
+                  <View style={styles.viewStyle}>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      Nick:
+                    </Text>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      User Nick
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.touchableStyle}>
+                  <View style={styles.viewStyle}>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      Name:
+                    </Text>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      User Name
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.touchableStyle}>
+                  <View style={styles.viewStyle}>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      Surname:
+                    </Text>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      User Surname
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.touchableStyle}>
+                  <View style={styles.viewStyle}>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      Email:
+                    </Text>
+                    <Text style={[styles.textStyle, {marginTop: 10}]}>
+                      User Email
+                    </Text>
+                  </View>
+                </View>
               </View>
             </Container>
           </ThemeProvider>
@@ -48,24 +87,31 @@ class reactWallSceen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   header: {
     backgroundColor: '#455A64',
   },
-  welcome: {
+  touchableStyle: {
+    height: 50,
+    width: window.width,
+    backgroundColor: '#bababa',
+    display: 'flex',
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 10,
+  },
+  viewStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width:  window.width - 40,
+  },
+  textStyle: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    fontFamily: 'Cochin',
+  }
 });
 
 export default reactWallSceen;

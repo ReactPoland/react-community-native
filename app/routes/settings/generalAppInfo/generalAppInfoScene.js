@@ -33,8 +33,36 @@ class generalAppInfoScene extends Component {
               centerElement="AppInfo"
             />
             <View style={styles.container}>
-              <Text style={styles.welcome}>
-              </Text>
+              <View style={styles.touchableStyle}>
+                <View style={styles.viewStyle}>
+                  <Text style={[styles.textStyle, {marginTop: 10}]}>
+                    Version:
+                  </Text>
+                  <Text style={[styles.textStyle, {marginTop: 10}]}>
+                    0.0.1
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.touchableStyle}>
+                <View style={styles.viewStyle}>
+                  <Text style={[styles.textStyle, {marginTop: 10}]}>
+                    Build:
+                  </Text>
+                  <Text style={[styles.textStyle, {marginTop: 10}]}>
+                    1
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.touchableStyle}>
+                <View style={styles.viewStyle}>
+                  <Text style={[styles.textStyle, {marginTop: 10}]}>
+                    Authors
+                  </Text>
+                  <Text style={[styles.textStyle, {marginTop: 10}]}>
+                    ReactPoland
+                  </Text>
+                </View>
+              </View>
             </View>
           </Container>
         </ThemeProvider>
@@ -44,24 +72,31 @@ class generalAppInfoScene extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   header: {
     backgroundColor: '#455A64',
   },
-  welcome: {
+  touchableStyle: {
+    height: 50,
+    width:  window.width,
+    backgroundColor: '#bababa',
+    display: 'flex',
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 10,
+  },
+  viewStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width:  window.width - 40,
+  },
+  textStyle: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    fontFamily: 'Cochin',
+  }
 });
 
 export default generalAppInfoScene;

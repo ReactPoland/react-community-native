@@ -26,16 +26,12 @@ const uiTheme = {
       height: 0,
     },
   },
-  typography: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-};
-const uiThemeSection = {
-    palette: {
-      primaryColor: '#FFFFFFF',
-      accentColor: '#FFFFFF',
-    },
+  drawerSection: {
+    container: {
+                paddingVertical: 8,
+            },
+  }
+
 };
 const settingsIcon = (<Image
   style={{marginLeft: 10, marginTop: 10, width: 40, height: 40,}}
@@ -71,9 +67,7 @@ export default class DrawerMenu extends Component {
                   source={{uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'}}
                 />
               </View>
-                <Drawer.Section uiTheme={uiThemeSection}
-                              style={{
-                                  container: { backgroundColor: '#B38381' }
+                <Drawer.Section style={{
                               }}
                               divider
                               items={[

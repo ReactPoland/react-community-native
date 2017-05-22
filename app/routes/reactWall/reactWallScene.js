@@ -13,7 +13,15 @@ const uiTheme = {
     container: {
       height: 70,
       paddingTop: 20,
+      backgroundColor: '#bababa',
     },
+    leftElement: {
+      color: 'black'
+    },
+    titleText: {
+      color: 'black',
+      marginLeft: 90,
+    }
   },
 };
 
@@ -26,7 +34,7 @@ class reactWallSceen extends Component {
               <Toolbar
                 leftElement='arrow'
                 onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
-                centerElement="ReactWall!"
+                centerElement="ReactWall"
               />
               <View style={styles.container}>
                 <Text style={styles.welcome}>
@@ -60,6 +68,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
 
 export default reactWallSceen;

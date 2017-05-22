@@ -1,10 +1,12 @@
 import DrawerScene from './drawerScene';
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
+import { Dimensions } from 'react-native';
 import DrawerMenu from './drawerMenu'
 import ReactWall from '../reactWall/'
 import ReactMap from '../reactMap/'
 import Settings from '../settings/'
 
+const window = Dimensions.get('window');
 // here add sceen for navigation
 const stackNavigator = StackNavigator({
   ReactWall: { screen: ReactWall },
@@ -20,6 +22,7 @@ const drawerNavigator = DrawerNavigator({
   contentComponent: DrawerMenu,
   contentOptions: {
     inactiveTintColor: '#e91e63'
-  }
+  },
+  drawerWidth: (2/3*window.width),
 })
 export default drawerNavigator;

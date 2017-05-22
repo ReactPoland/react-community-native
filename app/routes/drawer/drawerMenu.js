@@ -16,7 +16,9 @@ const uiTheme = {
   palette: {
     primaryColor: '#000000',
     accentColor: '#000',
-    canvasColor: '#B38381'
+    canvasColor: '#B38381',
+    borderWidth: 15,
+    borderColor: '#000000'
   },
   toolbar: {
     container: {
@@ -27,7 +29,7 @@ const uiTheme = {
   typography: {
     display: 'flex',
     justifyContent: 'center',
-  }
+  },
 };
 const uiThemeSection = {
     palette: {
@@ -53,7 +55,7 @@ export default class DrawerMenu extends Component {
           <StatusBar translucent />
           <Toolbar />
           <View style={styles.container}>
-            <Drawer style={{ container: { backgroundColor: '#B38381' }}}>
+            <Drawer style={{ container: { backgroundColor: '#B38381'}}}>
               <View style={styles.userIco}>
                 <TouchableOpacity onPress= {() => {
                     this.setState({ active: 'Settings' });
@@ -65,7 +67,7 @@ export default class DrawerMenu extends Component {
                   />
                 </TouchableOpacity>
                 <Image
-                  style={{position: 'absolute', marginTop: 15, marginLeft: 75, width: 200, height: 200, borderRadius: 150}}
+                  style={{position: 'absolute', marginTop: 25, marginLeft: 60, width: 150, height: 150, borderRadius: 150}}
                   source={{uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'}}
                 />
               </View>
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
         flex: 1,
       },
     userIco: {
-        height: 230,
+        height: 200,
     },
     header: {
         backgroundColor: '#B38381',

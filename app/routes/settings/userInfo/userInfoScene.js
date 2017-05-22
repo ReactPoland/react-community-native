@@ -33,12 +33,11 @@ class reactWallSceen extends Component {
             <Container>
               <Toolbar
                 leftElement='arrow'
-                onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
-                centerElement="ReactWall"
+                onLeftElementPress={() => this.props.navigation.navigate('Home')}
+                centerElement="User"
               />
               <View style={styles.container}>
                 <Text style={styles.welcome}>
-                  Welcome to ReactWall!
                 </Text>
               </View>
             </Container>

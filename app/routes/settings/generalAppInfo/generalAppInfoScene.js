@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
-import Container from '../drawer/container';
-import { StackNavigator } from 'react-navigation';
-import GeneralAppInfo from '../settings/generalAppInfo/'
-import LogOut from './logOut'
-import UserInfo from './userInfo'
-
+import Container from '../../drawer/container';
+import Icon from 'react-native-vector-icons/Ionicons';
+const myIcon = (<Icon name="bars" size={30} color="#900" />)
 const uiTheme = {
   palette: {
     primaryColor: COLOR.grey500,
@@ -28,24 +25,15 @@ const uiTheme = {
   },
 };
 
-class SettingsScene extends Component {
+class generalAppInfoScene extends Component {
     render () {
         const { errorToken } = this.props;
         return (
-          <ThemeProvider uiTheme={uiTheme}>
-            <Container>
-              <Toolbar
-                leftElement='arrow'
-                onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
-                centerElement="Settings"
-              />
-              <View style={styles.container}>
-                <Text style={styles.welcome}>
-                  Welcome to ReactWall!
-                </Text>
-              </View>
-            </Container>
-          </ThemeProvider>
+          <View>
+            <Text>
+              Test
+            </Text>
+          </View>
         );
     }
 }
@@ -72,13 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const MainAppStack = StackNavigator({
-  Home: {
-    screen: SettingsScene,
-    path: 'drawer'
-    },
-}, {
-    headerMode: 'none'
-});
-
-export default MainAppStack;
+export default generalAppInfoScene;

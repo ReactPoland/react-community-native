@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../drawer/container';
 import { StackNavigator } from 'react-navigation';
@@ -40,9 +40,35 @@ class SettingsScene extends Component {
                 centerElement="Settings"
               />
               <View style={styles.container}>
-                <Text style={styles.welcome}>
-                  Welcome to ReactWall!
-                </Text>
+                <View style={styles.touchableStyle}>
+                  <Text>
+                    User Info
+                  </Text>
+                </View>
+                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('General')}
+                  title="User Info">
+                  <View>
+                    <Text>
+                      User Info
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('UserInfo')}
+                  title="User Info">
+                  <View>
+                    <Text>
+                      User Info
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('LogOut')}
+                  title="User Info">
+                  <View>
+                    <Text>
+                      User Info
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </Container>
           </ThemeProvider>
@@ -70,6 +96,15 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  touchableStyle: {
+    height: 50,
+    width: 420,
+    backgroundColor: '#bababa',
+    display: 'flex',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 10,
+  }
 });
 
 const MainAppStack = StackNavigator({
@@ -77,6 +112,18 @@ const MainAppStack = StackNavigator({
     screen: SettingsScene,
     path: 'drawer'
     },
+  General: {
+    screen: GeneralAppInfo,
+    path: 'general'
+  },
+  UserInfo: {
+    screen: UserInfo,
+    path: 'general'
+  },
+  LogOut: {
+    screen: LogOut,
+    path: 'general'
+  }
 }, {
     headerMode: 'none'
 });

@@ -27,7 +27,6 @@ const uiTheme = {
 
 class reactWallSceen extends Component {
     render () {
-        const { errorToken } = this.props;
         return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>

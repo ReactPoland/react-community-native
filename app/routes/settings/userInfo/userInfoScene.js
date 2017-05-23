@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../../drawer/container';
-import Icon from 'react-native-vector-icons/Ionicons';
-const myIcon = (<Icon name="bars" size={30} color="#900" />)
 const window = Dimensions.get('window');
 const uiTheme = {
   palette: {

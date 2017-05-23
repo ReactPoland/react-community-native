@@ -34,7 +34,7 @@ class ReactMapScene extends Component {
             <Toolbar
               leftElement="menu"
               onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
-              centerElement="Settings"
+              centerElement="ReactMap"
             />
             <View style={styles.container}>
               <View style={styles.touchableStyle}>

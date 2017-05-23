@@ -5,15 +5,15 @@ const myIcon = (<Icon name="external-link" size={20} color='black'/>)
 
 const window = Dimensions.get('window');
 class WallArticle extends Component {
+
     render () {
+      console.log(this.props.data)
         return (
             <View style={styles.container}>
-              <Text numberOfLines={1} style={styles.titleStyle}>TITLE</Text>
+              <Text numberOfLines={1} style={styles.titleStyle}>{this.props.data.title}</Text>
               <View style={styles.articleContent}>
                 <View style={styles.titleLine}></View>
-                <Text numberOfLines={7} style={styles.articleTextStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                  Donec vulputate interdum sollicitudin. Nunc
-                  lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                <Text numberOfLines={7} style={styles.articleTextStyle}>{this.props.data.art}
                 </Text>
                 <View style={styles.webSite} />
                   <TouchableWithoutFeedback><View><Text style={styles.webSiteText}>{myIcon}   Website</Text></View></TouchableWithoutFeedback>

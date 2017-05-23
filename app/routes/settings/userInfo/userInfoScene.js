@@ -28,12 +28,11 @@ const uiTheme = {
 
 class reactWallSceen extends Component {
     render () {
-        const { errorToken } = this.props;
         return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
               <Toolbar
-                leftElement='arrow'
+                leftElement="arrow-back"
                 onLeftElementPress={() => this.props.navigation.navigate('Home')}
                 centerElement="User"
               />

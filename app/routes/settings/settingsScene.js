@@ -25,7 +25,7 @@ const uiTheme = {
     },
     titleText: {
       color: 'black',
-      marginLeft: 90,
+      marginLeft: 80,
     }
   },
 };
@@ -37,7 +37,7 @@ class SettingsScene extends Component {
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
               <Toolbar
-                leftElement='arrow'
+                leftElement="menu"
                 onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
                 centerElement="Settings"
               />

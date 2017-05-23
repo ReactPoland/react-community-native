@@ -18,7 +18,7 @@ const uiTheme = {
     },
     titleText: {
       color: 'black',
-      marginLeft: 90,
+      marginLeft: 80,
     }
   },
 };
@@ -28,7 +28,7 @@ class generalAppInfoScene extends Component {
         <ThemeProvider uiTheme={uiTheme}>
           <Container>
             <Toolbar
-              leftElement='arrow'
+              leftElement="arrow-back"
               onLeftElementPress={() => this.props.navigation.navigate('Home')}
               centerElement="AppInfo"
             />

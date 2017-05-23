@@ -28,10 +28,31 @@ const uiTheme = {
   },
   drawerSection: {
     container: {
-                paddingVertical: 8,
-            },
-  }
-
+        paddingVertical: 8,
+    },
+  },
+  drawerSection: {
+    container: {
+      borderColor: '#d6d7da',
+    },
+  },
+  divider: {
+    container: {
+      backgroundColor: '#B38381',
+    }
+  },
+  drawer: {
+    container: {
+      backgroundColor: 'blue',
+    }
+  },
+  typography: {
+    buttons: {
+      fontWeight: '400',
+      fontFamily: 'sans-serif',
+      fontSize: 20,
+    }
+  },
 };
 const settingsIcon = (<Image
   style={{marginLeft: 10, marginTop: 10, width: 40, height: 40,}}

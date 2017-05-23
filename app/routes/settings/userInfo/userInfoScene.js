@@ -14,7 +14,7 @@ const uiTheme = {
     container: {
       height: 80,
       paddingTop: 20,
-      backgroundColor: '#bababa',
+      backgroundColor: '#EBEBEB',
     },
     leftElement: {
       color: 'black'
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   touchableStyle: {
     height: 50,
     width: window.width,
-    backgroundColor: '#bababa',
+    backgroundColor: '#EBEBEB',
     display: 'flex',
     justifyContent: 'center',
     paddingLeft: 20,

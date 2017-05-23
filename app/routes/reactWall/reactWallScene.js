@@ -12,7 +12,7 @@ const uiTheme = {
     container: {
       height: 80,
       paddingTop: 20,
-      backgroundColor: '#bababa',
+      backgroundColor: '#EBEBEB',
     },
     leftElement: {
       color: 'black',

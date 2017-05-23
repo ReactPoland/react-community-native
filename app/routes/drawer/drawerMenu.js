@@ -22,7 +22,7 @@ const uiTheme = {
   },
   toolbar: {
     container: {
-      backgroundColor: "#B38381",
+      backgroundColor: "#EBEBEB",
       height: 0,
     },
   },

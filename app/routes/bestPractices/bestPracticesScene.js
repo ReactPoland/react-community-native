@@ -25,7 +25,7 @@ const uiTheme = {
   },
 };
 
-class ReactMapScene extends Component {
+class BestPractices extends Component {
   render () {
       const { errorToken } = this.props;
       return (
@@ -34,7 +34,7 @@ class ReactMapScene extends Component {
             <Toolbar
               leftElement="menu"
               onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
-              centerElement="Settings"
+              centerElement="Best Practices"
             />
             <View style={styles.container}>
               <View style={styles.touchableStyle}>
@@ -81,4 +81,4 @@ textStyle: {
 }
 });
 
-export default ReactMapScene;
+export default BestPractices;

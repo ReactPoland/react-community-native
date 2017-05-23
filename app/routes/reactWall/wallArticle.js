@@ -16,7 +16,7 @@ class WallArticle extends Component {
                   lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
                 </Text>
                 <View style={styles.webSite} />
-                  <TouchableWithoutFeedback><Text style={styles.webSiteText}>{myIcon}   Website</Text></TouchableWithoutFeedback>
+                  <TouchableWithoutFeedback><View><Text style={styles.webSiteText}>{myIcon}   Website</Text></View></TouchableWithoutFeedback>
                 <View style={styles.webSite} />
               </View>
             </View>

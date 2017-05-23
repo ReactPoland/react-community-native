@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../../drawer/container';
+const window = Dimensions.get('window');
 const uiTheme = {
   palette: {
     primaryColor: COLOR.grey500,
@@ -72,14 +73,15 @@ class generalAppInfoScene extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
+    height: window.height,
   },
   header: {
     backgroundColor: '#455A64',
   },
   touchableStyle: {
     height: 50,
-    width:  window.width,
+    width: window.width,
     backgroundColor: '#EBEBEB',
     display: 'flex',
     justifyContent: 'center',

@@ -115,10 +115,10 @@ export default class DrawerMenu extends Component {
                                     },
                                   {
                                       value: 'Best Practices',
-                                      active: this.state.active == 'Best Practices',
+                                      active: this.state.active == 'BestPractices',
                                       onPress: () => {
-                                          this.setState({ active: 'Best Practices' });
-                                          this.props.navigation.navigate('Best Practices');
+                                          this.setState({ active: 'BestPractices' });
+                                          this.props.navigation.navigate('BestPractices');
                                         },
                                     },
                                   {

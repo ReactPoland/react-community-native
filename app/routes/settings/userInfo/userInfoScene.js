@@ -86,7 +86,8 @@ class reactWallSceen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
+    height: window.height,
   },
   header: {
     backgroundColor: '#455A64',

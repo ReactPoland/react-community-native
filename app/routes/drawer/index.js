@@ -5,6 +5,10 @@ import DrawerMenu from './drawerMenu'
 import ReactWall from '../reactWall/'
 import ReactMap from '../reactMap/'
 import Settings from '../settings/'
+import Articles from '../articles/'
+import Events from '../events/'
+import Tutorials from '../tutorials'
+import BestPractices from '../bestPractices'
 
 const window = Dimensions.get('window');
 // here add sceen for navigation
@@ -12,6 +16,10 @@ const stackNavigator = StackNavigator({
   ReactWall: { screen: ReactWall },
   ReactMap: { screen: ReactMap },
   Settings: { screen: Settings },
+  Articles: { screen: Articles },
+  Events: { screen: Events },
+  Tutorials: { screen: Tutorials },
+  BestPractices: { screen: BestPractices },
 }, {
   headerMode: 'none'
 })

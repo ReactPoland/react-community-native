@@ -5,9 +5,7 @@ const myIcon = (<Icon name="external-link" size={20} color='black'/>)
 
 const window = Dimensions.get('window');
 class WallArticle extends Component {
-
     render () {
-      console.log(this.props.data)
         return (
             <View style={styles.container}>
               <Text numberOfLines={1} style={styles.titleStyle}>{this.props.data.title}</Text>
@@ -15,9 +13,11 @@ class WallArticle extends Component {
                 <View style={styles.titleLine}></View>
                 <Text numberOfLines={7} style={styles.articleTextStyle}>{this.props.data.art}
                 </Text>
+              <View style={styles.webSiteAbsolute}>
                 <View style={styles.webSite} />
                   <TouchableWithoutFeedback><View><Text style={styles.webSiteText}>{myIcon}   Website</Text></View></TouchableWithoutFeedback>
                 <View style={styles.webSite} />
+              </View>
               </View>
             </View>
         );
@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderColor: '#000000',
         paddingTop: 5,
+    },
+    webSiteAbsolute: {
+      position: 'absolute',
+      marginTop: 165,
     },
     webSiteText: {
         marginLeft: 10,

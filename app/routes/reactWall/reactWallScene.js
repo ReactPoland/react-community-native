@@ -35,7 +35,7 @@ class reactWallSceen extends Component {
         dataSource: ds.cloneWithRows([
           {title: 'TITLE', art: 'balbalbalbal'},
           {title: 'TITLE', art: 'testst'},
-          {title: 'TITLE', art: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et mi ut libero venenatis consequat vitae in velit. Maecenas in tristique nibh. Pellentesque diam ex, sodales ac erat ut, ullamcorper scelerisque nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer laoreet ex vel elit efficitur volutpat. Donec dolor magna, porttitor et massa sit amet, ornare lobortis odio. Suspendisse potenti. Morbi pellentesque ante sit amet tortor pulvinar sodales. Maecenas eu vestibulum ex. Phasellus vitae purus eros. Vestibulum sed erat a orci cursus eleifend.'},
+          {title: 'Lorrrrreeeeeee ippppppppppppppppsummmmmmm', art: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et mi ut libero venenatis consequat vitae in velit. Maecenas in tristique nibh. Pellentesque diam ex, sodales ac erat ut, ullamcorper scelerisque nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer laoreet ex vel elit efficitur volutpat. Donec dolor magna, porttitor et massa sit amet, ornare lobortis odio. Suspendisse potenti. Morbi pellentesque ante sit amet tortor pulvinar sodales. Maecenas eu vestibulum ex. Phasellus vitae purus eros. Vestibulum sed erat a orci cursus eleifend.'},
         ])
       }
     }
@@ -53,6 +53,7 @@ class reactWallSceen extends Component {
                   dataSource={this.state.dataSource}
                   renderRow={(rowData) => <WallArticle data={rowData}/>}
                 />
+                <View style={styles.scrollEndLine}/>
               </View>
             </Container>
           </ThemeProvider>
@@ -68,11 +69,6 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#455A64',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
   instructions: {
     textAlign: 'center',

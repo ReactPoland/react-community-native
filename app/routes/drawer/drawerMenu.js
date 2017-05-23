@@ -36,6 +36,11 @@ const uiTheme = {
       borderColor: '#d6d7da',
     },
   },
+  button: {
+    container: {
+      backgroundColor: 'red',
+    }
+  },
   divider: {
     container: {
       backgroundColor: '#B38381',

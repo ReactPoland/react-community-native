@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui'
 import Container from '../drawer/container'
 import WallArticle from './wallArticle'
 const uiTheme = {
-  palette: {
-    primaryColor: COLOR.grey500,
-    accentColor: COLOR.grey500,
-  },
   toolbar: {
     container: {
       height: 80,
@@ -42,7 +38,12 @@ class reactWallSceen extends Component {
                 centerElement="ReactWall"
               />
               <View style={styles.container}>
-                <WallArticle />
+                <ScrollView>
+                  <WallArticle />
+                  <WallArticle />
+                  <WallArticle />
+                  <View style={styles.scrollEndLine}></View>
+                </ScrollView>
               </View>
             </Container>
           </ThemeProvider>
@@ -69,6 +70,9 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  scrollEndLine: {
+    height: 10,
+  }
 });
 
 export default reactWallSceen;

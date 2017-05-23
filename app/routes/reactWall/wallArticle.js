@@ -8,7 +8,7 @@ class WallArticle extends Component {
     render () {
         return (
             <View style={styles.container}>
-              <Text style={styles.titleStyle}>TITLE</Text>
+              <Text numberOfLines={1} style={styles.titleStyle}>TITLE</Text>
               <View style={styles.articleContent}>
                 <View style={styles.titleLine}></View>
                 <Text numberOfLines={7} style={styles.articleTextStyle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.

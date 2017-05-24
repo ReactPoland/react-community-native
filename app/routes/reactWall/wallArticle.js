@@ -8,10 +8,10 @@ class WallArticle extends Component {
     render () {
         return (
             <View style={styles.container}>
-              <Text numberOfLines={1} style={styles.titleStyle}>{this.props.data.title}</Text>
+              <Text numberOfLines={1} style={styles.titleStyle}></Text>
               <View style={styles.articleContent}>
                 <View style={styles.titleLine}></View>
-                <Text numberOfLines={7} style={styles.articleTextStyle}>{this.props.data.art}
+                <Text numberOfLines={7} style={styles.articleTextStyle}>
                 </Text>
               <View style={styles.webSiteAbsolute}>
                 <View style={styles.webSite} />

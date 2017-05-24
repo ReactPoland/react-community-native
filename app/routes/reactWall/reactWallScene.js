@@ -28,29 +28,31 @@ const uiTheme = {
     },
   },
 };
-
+const productArray = [];
 class reactWallSceen extends Component {
     constructor(props) {
       super(props)
-      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+      const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = {
-        articles: {},
-        dataSource: ds.cloneWithRows([
-          {title: 'TITLE', art: 'balbalbalbal'},
-          {title: 'TITLE', art: 'testst'},
-          {title: 'Lorrrrreeeeeee ippppppppppppppppsummmmmmm', art: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et mi ut libero venenatis consequat vitae in velit. Maecenas in tristique nibh. Pellentesque diam ex, sodales ac erat ut, ullamcorper scelerisque nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer laoreet ex vel elit efficitur volutpat. Donec dolor magna, porttitor et massa sit amet, ornare lobortis odio. Suspendisse potenti. Morbi pellentesque ante sit amet tortor pulvinar sodales. Maecenas eu vestibulum ex. Phasellus vitae purus eros. Vestibulum sed erat a orci cursus eleifend.'},
-        ])
+        dataSource: dataSource.cloneWithRows(productArray),
+
       }
     }
 
     componentWillMount(){
       Articles.getRovers().then((res) => {
-        this.setState({ articles: res})
+        productArray = res
+        console.log('product', productArray)
+        this.setState({
+          dataSource:this.state.dataSource.cloneWithRows(productArray),
+          isLoading:false
+        })
       })
     }
 
     render () {
-      console.log("articles: " + this.state.articles)
+
+        console.log('articles', this.state.articles)
         return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
@@ -60,10 +62,8 @@ class reactWallSceen extends Component {
                 centerElement="ReactWall"
               />
               <View style={styles.container}>
-                <ListView
-                  dataSource={this.state.dataSource}
-                  renderRow={(rowData) => <WallArticle data={rowData}/>}
-                />
+                <ListView dataSource={this.state.dataSource}
+                   renderRow={(rowData) => <WallArticle />} />
                 <View style={styles.scrollEndLine}/>
               </View>
             </Container>

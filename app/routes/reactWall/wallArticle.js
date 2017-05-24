@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 const myIcon = (<Icon name="external-link" size={20} color='black'/>)
-
 const window = Dimensions.get('window');
+
 class WallArticle extends Component {
-    render () {
+
+  render () {
+        const data = this.props.data.title
+
         return (
             <View style={styles.container}>
-              <Text numberOfLines={1} style={styles.titleStyle}></Text>
+              <Text numberOfLines={1} style={styles.titleStyle}>{data}</Text>
               <View style={styles.articleContent}>
                 <View style={styles.titleLine}></View>
                 <Text numberOfLines={7} style={styles.articleTextStyle}>

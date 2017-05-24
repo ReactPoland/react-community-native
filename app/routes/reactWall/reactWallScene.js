@@ -42,7 +42,6 @@ class reactWallSceen extends Component {
     componentWillMount(){
       Articles.getRovers().then((res) => {
         productArray = res
-        console.log('product', productArray)
         this.setState({
           dataSource:this.state.dataSource.cloneWithRows(productArray),
           isLoading:false
@@ -51,8 +50,8 @@ class reactWallSceen extends Component {
     }
 
     render () {
-
-        console.log('articles', this.state.articles)
+      var currentView = (this.state.isLoading)?<View/>:<ListView dataSource={this.state.dataSource}
+         renderRow={(rowData) => <WallArticle data={rowData}/>} />
         return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
@@ -62,8 +61,7 @@ class reactWallSceen extends Component {
                 centerElement="ReactWall"
               />
               <View style={styles.container}>
-                <ListView dataSource={this.state.dataSource}
-                   renderRow={(rowData) => <WallArticle />} />
+                {currentView}
                 <View style={styles.scrollEndLine}/>
               </View>
             </Container>

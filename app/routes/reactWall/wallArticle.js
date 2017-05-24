@@ -3,18 +3,22 @@ import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback } from 're
 import Icon from 'react-native-vector-icons/FontAwesome';
 const myIcon = (<Icon name="external-link" size={20} color='black'/>)
 const window = Dimensions.get('window');
-
+const content = ""
 class WallArticle extends Component {
 
   render () {
         const data = this.props.data.title
-
+        if(this.props.data.content){
+          content = this.props.data.content.nodes[0].nodes[0].text
+        }
+        else content = ""
+        console.log(content)
         return (
             <View style={styles.container}>
               <Text numberOfLines={1} style={styles.titleStyle}>{data}</Text>
               <View style={styles.articleContent}>
                 <View style={styles.titleLine}></View>
-                <Text numberOfLines={7} style={styles.articleTextStyle}>
+                <Text numberOfLines={7} style={styles.articleTextStyle}>{content}
                 </Text>
               <View style={styles.webSiteAbsolute}>
                 <View style={styles.webSite} />

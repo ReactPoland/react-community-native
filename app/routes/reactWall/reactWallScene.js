@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ScrollView, ListView } from 'react-native'
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui'
 import Container from '../drawer/container'
 import WallArticle from './wallArticle'
+import Articles from '../../utils/articles'
+
 const uiTheme = {
   toolbar: {
     container: {
@@ -32,6 +34,7 @@ class reactWallSceen extends Component {
       super(props)
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = {
+        articles: {},
         dataSource: ds.cloneWithRows([
           {title: 'TITLE', art: 'balbalbalbal'},
           {title: 'TITLE', art: 'testst'},
@@ -39,7 +42,15 @@ class reactWallSceen extends Component {
         ])
       }
     }
+
+    componentWillMount(){
+      Articles.getRovers().then((res) => {
+        this.setState({ articles: res})
+      })
+    }
+
     render () {
+      console.log("articles: " + this.state.articles)
         return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>

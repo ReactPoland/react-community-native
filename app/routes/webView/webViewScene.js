@@ -3,9 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions, WebView } from 'r
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../drawer/container';
 import { StackNavigator } from 'react-navigation';
-
-
 const window = Dimensions.get('window');
+
 const uiTheme = {
   palette: {
     primaryColor: COLOR.grey500,
@@ -13,8 +12,7 @@ const uiTheme = {
   },
   toolbar: {
     container: {
-      height: 80,
-      paddingTop: 20,
+      height: 60,
       backgroundColor: '#EBEBEB',
     },
     leftElement: {
@@ -23,7 +21,10 @@ const uiTheme = {
     titleText: {
       color: 'black',
       marginLeft: 80,
-    }
+    },
+    rightElement: {
+      color: 'black'
+    },
   },
 };
 
@@ -33,14 +34,16 @@ class webViewScene extends Component {
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
               <Toolbar
-                leftElement="menu"
+                leftElement="arrow-back"
                 onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
-                centerElement="Settings"
+                centerElement="site"
+                rightElement="exit-to-app"
+                onRightElementPress={() => this.props.navigation.navigate('DrawerOpen')}
               />
               <View style={styles.container}>
-                    <WebView
-                      source={{uri: 'https://github.com/facebook/react-native'}}
-                    />
+                <WebView
+                  source={{uri: 'http://reactjs.co/'}}
+                />
               </View>
             </Container>
           </ThemeProvider>

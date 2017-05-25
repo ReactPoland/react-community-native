@@ -12,7 +12,7 @@ const uiTheme = {
   },
   toolbar: {
     container: {
-      height: 60,
+      height: 80,
       backgroundColor: '#EBEBEB',
     },
     leftElement: {
@@ -35,14 +35,14 @@ class webViewScene extends Component {
             <Container>
               <Toolbar
                 leftElement="arrow-back"
-                onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
+                onLeftElementPress={() => this.props.navigation.navigate('Drawer')}
                 centerElement="site"
                 rightElement="exit-to-app"
-                onRightElementPress={() => Linking.openURL('http://reactjs.co/')}
+                onRightElementPress={() => Linking.openURL('http://react-community-stage.herokuapp.com/article/22/test-article')}
               />
               <View style={styles.container}>
                 <WebView
-                  source={{uri: 'http://reactjs.co/'}}
+                  source={{uri: 'http://react-community-stage.herokuapp.com/article/22/test-article'}}
                 />
               </View>
             </Container>

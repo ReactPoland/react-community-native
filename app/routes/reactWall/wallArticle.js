@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, StackNavigator } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import WebView from '../webView/'
 const myIcon = (<Icon name="external-link" size={20} color='black'/>)
 const window = Dimensions.get('window');
 const content = ""
+const data = ""
+const linkArray = []
 class WallArticle extends Component {
-
   render () {
-        const data = this.props.data.title
+        data = this.props.data.title
         if(this.props.data.content){
           content = this.props.data.content.nodes[0].nodes[0].text
+          linkArray.push("https://react-community-stage.herokuapp.com/article/" + this.props.data.id + "/" + this.props.data.slug)
         }
-        else content = ""
-        console.log(content)
+        else {
+          content = this.props.data.description
+          linkArray.push(this.props.data.linkArray)
+        }
         return (
             <View style={styles.container}>
               <Text numberOfLines={1} style={styles.titleStyle}>{data}</Text>
@@ -22,7 +27,15 @@ class WallArticle extends Component {
                 </Text>
               <View style={styles.webSiteAbsolute}>
                 <View style={styles.webSite} />
-                  <TouchableWithoutFeedback><View><Text style={styles.webSiteText}>{myIcon}   Website</Text></View></TouchableWithoutFeedback>
+                  <TouchableOpacity onPress={ () =>
+                    {
+                      this.props.handleOnPress(linkArray, this.props.rowId)
+                      linkArray = []
+                    }}>
+                    <View>
+                      <Text style={styles.webSiteText}>{myIcon}   Website</Text>
+                    </View>
+                  </TouchableOpacity>
                 <View style={styles.webSite} />
               </View>
               </View>

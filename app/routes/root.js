@@ -4,13 +4,13 @@ import DrawerScreen from './drawer';
 import WebViewScreen from './webView';
 
 const MainAppStack = StackNavigator({
-    WebView: {
-      screen: WebViewScreen,
-      path: 'webView'
-    },
     Drawer: {
       screen: DrawerScreen,
       path: 'drawer'
+    },
+    WebView: {
+      screen: WebViewScreen,
+      path: 'webView'
     },
     Login: {
         screen: LoginScreen,

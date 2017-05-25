@@ -28,29 +28,30 @@ const uiTheme = {
     },
   },
 };
-const articlesArray = [];
+const productArray = [];
 class reactWallSceen extends Component {
     constructor(props) {
       super(props)
       const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = {
-        dataSource: dataSource.cloneWithRows(articlesArray),
+        dataSource: dataSource.cloneWithRows(productArray),
 
       }
     }
     onPressWebView = (webViewLink, id) => {
-      const link = webViewLink.find(( el, i) => {
+      let link = ""
+      webViewLink.some((i, index) => {
         id = parseInt(id)
-         if (id === i) return true
+        if (index === id)
+        return link = i
       })
-      console.log(link)
       this.props.navigation.navigate('WebView' , { webViewLink: link })
     }
     componentWillMount(){
       Articles.getRovers().then((res) => {
-        articlesArray = res
+        productArray = res
         this.setState({
-          dataSource:this.state.dataSource.cloneWithRows(articlesArray),
+          dataSource:this.state.dataSource.cloneWithRows(productArray),
           isLoading:false
         })
       })

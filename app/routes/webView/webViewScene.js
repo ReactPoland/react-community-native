@@ -20,7 +20,6 @@ const uiTheme = {
     },
     titleText: {
       color: 'black',
-      marginLeft: 80,
     },
     rightElement: {
       color: 'black'
@@ -30,19 +29,20 @@ const uiTheme = {
 
 class webViewScene extends Component {
     render () {
+        const { params } = this.props.navigation.state;
         return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
               <Toolbar
                 leftElement="arrow-back"
                 onLeftElementPress={() => this.props.navigation.navigate('Drawer')}
-                centerElement="site"
+                centerElement={params.webViewLink}
                 rightElement="exit-to-app"
-                onRightElementPress={() => Linking.openURL('http://react-community-stage.herokuapp.com/article/22/test-article')}
+                onRightElementPress={() => Linking.openURL(params.webViewLink)}
               />
-              <View style={styles.container}>
+              <View style={styles.webViewStyle}>
                 <WebView
-                  source={{uri: 'http://react-community-stage.herokuapp.com/article/22/test-article'}}
+                  source={{uri: params.webViewLink}}
                 />
               </View>
             </Container>
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     height: window.height,
   },
-  header: {
-    backgroundColor: '#455A64',
+  webViewStyle: {
+    height: window.height - 80
   },
 });
 

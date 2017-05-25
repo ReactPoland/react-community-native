@@ -16,7 +16,7 @@ class WallArticle extends Component {
         }
         else {
           content = this.props.data.description
-          linkArray.push(this.props.data.linkArray)
+          linkArray.push(this.props.data.link)
         }
         return (
             <View style={styles.container}>

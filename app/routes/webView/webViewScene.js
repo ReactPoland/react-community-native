@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, WebView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, WebView, Linking } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import Container from '../drawer/container';
 import { StackNavigator } from 'react-navigation';
@@ -38,7 +38,7 @@ class webViewScene extends Component {
                 onLeftElementPress={() => this.props.navigation.navigate('DrawerOpen')}
                 centerElement="site"
                 rightElement="exit-to-app"
-                onRightElementPress={() => this.props.navigation.navigate('DrawerOpen')}
+                onRightElementPress={() => Linking.openURL('http://reactjs.co/')}
               />
               <View style={styles.container}>
                 <WebView
@@ -59,26 +59,6 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#455A64',
   },
-  touchableStyle: {
-    height: 50,
-    width:  window.width,
-    backgroundColor: '#EBEBEB',
-    display: 'flex',
-    justifyContent: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    marginTop: 10,
-  },
-  viewStyle: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: window.width - 40,
-  },
-  textStyle: {
-    fontSize: 20,
-    fontFamily: 'Cochin',
-  }
 });
 
 

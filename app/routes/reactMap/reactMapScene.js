@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Switch } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
 import { StackNavigator } from 'react-navigation';
+import MapView from 'react-native-maps'
 import Container from '../drawer/container';
 const window = Dimensions.get('window');
 const uiTheme = {
@@ -81,6 +82,15 @@ class ReactMapScene extends Component {
                   </Text>
                 </View>
               </View>
+              <MapView
+                style={styles.map}
+                initialRegion={{
+                  latitude: 37.78825,
+                  longitude: -122.4324,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}
+              />
             </View>
           </Container>
         </ThemeProvider>
@@ -89,33 +99,39 @@ class ReactMapScene extends Component {
 }
 
 const styles = StyleSheet.create({
-container: {
-  backgroundColor: '#FFF',
-  height: window.height,
-},
-header: {
-  backgroundColor: '#455A64',
-},
-touchableStyle: {
-  height: 50,
-  width:  window.width,
-  backgroundColor: '#EBEBEB',
-  display: 'flex',
-  justifyContent: 'center',
-  paddingLeft: 20,
-  paddingRight: 20,
-  marginTop: 10,
-},
-viewStyle: {
-  flex: 1,
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  width: window.width - 40,
-},
-textStyle: {
-  fontSize: 20,
-  fontFamily: 'Cochin',
-}
+  container: {
+    backgroundColor: '#FFF',
+    height: window.height,
+  },
+  header: {
+    backgroundColor: '#455A64',
+  },
+  touchableStyle: {
+    height: 50,
+    width:  window.width,
+    backgroundColor: '#EBEBEB',
+    display: 'flex',
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 10,
+  },
+  viewStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: window.width - 40,
+  },
+  textStyle: {
+    fontSize: 20,
+    fontFamily: 'Cochin',
+  },
+  map: {
+    height: 300,
+    width: window.width,
+    borderWidth: 1,
+    borderColor: 'black',
+  }
 });
 
 export default ReactMapScene;

@@ -44,6 +44,25 @@ const uiTheme = {
 };
 
 class ReactMapScene extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
+    }
+  }
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({ latitude: position.coords.latitude,
+                      longitude: position.coords.longitude,
+                      error: null,
+                    })
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuract: true, timeout: 20000, maximumAge: 1000},
+    )
+  }
   render () {
       const { errorToken } = this.props;
       return (
@@ -58,7 +77,7 @@ class ReactMapScene extends Component {
               <View style={styles.touchableStyle}>
                 <View style={styles.viewStyle}>
                   <Text style={[styles.textStyle, {marginTop: 10}]}>
-                    Available soon...
+                    Latitude: {this.state.latitude}, longitude: {this.state.longitude}
                   </Text>
                 </View>
               </View>

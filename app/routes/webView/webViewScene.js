@@ -18,8 +18,19 @@ const uiTheme = {
     leftElement: {
       color: 'black'
     },
+    centerElementContainer:
+    {
+      position: 'relative',
+      width: window.width - 160,
+      height: 60,
+      marginLeft: 80,
+      marginRight: 80,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
     titleText: {
       color: 'black',
+      paddingBottom: 20,
     },
     rightElement: {
       color: 'black'

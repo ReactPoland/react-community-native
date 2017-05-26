@@ -15,12 +15,30 @@ const uiTheme = {
       backgroundColor: '#EBEBEB',
     },
     leftElement: {
-      color: 'black'
+      color: 'black',
+      fontSize: 55,
+    },
+    leftElementContainer: {
+      fontSize: 55,
     },
     titleText: {
+      marginTop: 20,
       color: 'black',
-      marginLeft: 90,
-    }
+    },
+    centerElementContainer:
+    {
+      position: 'absolute',
+      width: window.width - 160,
+      height: 80,
+      marginLeft: 80,
+      marginRight: 80,
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    leftElementContainer: {
+      marginLeft: 5,
+    },
   },
 };
 

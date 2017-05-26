@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, ScrollView, ListView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, ListView, Dimensions } from 'react-native'
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui'
 import Container from '../drawer/container'
 import WallArticle from './wallArticle'
 import Articles from '../../utils/articles'
-
+const window = Dimensions.get('window')
 const uiTheme = {
   toolbar: {
     container: {
@@ -20,8 +20,19 @@ const uiTheme = {
       fontSize: 55,
     },
     titleText: {
+      marginTop: 20,
       color: 'black',
+    },
+    centerElementContainer:
+    {
+      position: 'absolute',
+      width: window.width - 160,
+      height: 80,
       marginLeft: 80,
+      marginRight: 80,
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     leftElementContainer: {
       marginLeft: 5,

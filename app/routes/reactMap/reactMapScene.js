@@ -5,6 +5,12 @@ import { StackNavigator } from 'react-navigation';
 import MapView from 'react-native-maps'
 import Container from '../drawer/container';
 const window = Dimensions.get('window');
+const SCREEN_HEIGHT = window.height
+const SCREEN_WIDTH = window.width
+const ASPECT_RATIO = window.width/window.height
+const LATTITUDE_DELTA = 0.0922
+const LONGTITUDE_DELTA = LATTITUDE_DELTA * ASPECT_RATIO
+
 const uiTheme = {
   palette: {
     primaryColor: COLOR.grey500,
@@ -48,24 +54,57 @@ class ReactMapScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude: null,
-      longitude: null,
-      error: null,
+      initialPosition: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0,
+        longitudeDelta: 0
+      },
+      markerPosition: {
+        latitude: 0,
+        longitudeDelta: 0,
+      }
     }
   }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({ latitude: position.coords.latitude,
-                      longitude: position.coords.longitude,
-                      error: null,
-                    })
-      },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuract: true, timeout: 20000, maximumAge: 1000},
-    )
+      var lat = parseFloat(position.coords.latitude)
+      var long = parseFloat(position.coords.longitude)
+      console.log('geolocation work')
+      var initialRegion = {
+        latitude: lat,
+        longitude: long,
+        latitudeDelta: LATTITUDE_DELTA,
+        longitudeDelta: LONGTITUDE_DELTA
+      }
+      this.setState({ initialRegion: initialRegion })
+      this.setState({ markerPosition: initialRegion})
+    },
+    (error) => alert(JSON.stringify(error)),
+    {enableHighAccuracy: true, timeout: 200000, maximumAge: 1000})
+
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      var lat = parseFloat(position.coords.latitude)
+      var long = parseFloat(position.coords.longitude)
+
+      var lastRegion = {
+        latitude: lat,
+        longitude: long,
+        longitudeDelta: LONGTITUDE_DELTA,
+        latitudeDelta: LATTITUDE_DELTA
+      }
+
+      this.setState({initialPosition: lastRegion})
+      this.setState({markerPosition: lastRegion})
+    })
   }
+
+  componentWillMount() {
+    navigator.geolocation.clearWatch(this.watchID)
+  }
+
   render () {
-      const { errorToken } = this.props;
       return (
         <ThemeProvider uiTheme={uiTheme}>
           <Container>
@@ -84,12 +123,7 @@ class ReactMapScene extends Component {
               </View>
               <MapView
                 style={styles.map}
-                initialRegion={{
-                  latitude: 37.78825,
-                  longitude: -122.4324,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}
+                initialRegion={this.state.initialPosition}
               />
             </View>
           </Container>
@@ -127,7 +161,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Cochin',
   },
   map: {
-    height: 300,
+    height: window.height/2,
     width: window.width,
     borderWidth: 1,
     borderColor: 'black',

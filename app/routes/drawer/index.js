@@ -1,28 +1,27 @@
-import DrawerScene from './drawerScene';
-import { DrawerNavigator, StackNavigator } from 'react-navigation'
+import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import { Dimensions } from 'react-native';
-import DrawerMenu from './drawerMenu'
-import ReactWall from '../reactWall/'
-import ReactMap from '../reactMap/'
-import Settings from '../settings/'
+import DrawerMenu from './drawerMenu';
+import ReactWall from '../reactWall/';
+import ReactMap from '../reactMap/';
+import Settings from '../settings/';
 
 const window = Dimensions.get('window');
 // here add sceen for navigation
 const stackNavigator = StackNavigator({
-  ReactWall: { screen: ReactWall },
-  ReactMap: { screen: ReactMap },
-  Settings: { screen: Settings },
+    ReactWall: { screen: ReactWall },
+    ReactMap: { screen: ReactMap },
+    Settings: { screen: Settings }
 }, {
-  headerMode: 'none'
-})
+    headerMode: 'none'
+});
 const drawerNavigator = DrawerNavigator({
-  Home: { screen: ReactWall },
-  Stack: { screen: stackNavigator }
+    Home: { screen: ReactWall },
+    Stack: { screen: stackNavigator }
 }, {
-  contentComponent: DrawerMenu,
-  contentOptions: {
-    inactiveTintColor: '#e91e63'
-  },
-  drawerWidth: (2/3*window.width),
-})
+    contentComponent: DrawerMenu,
+    contentOptions: {
+        inactiveTintColor: '#e91e63'
+    },
+    drawerWidth: (2 / 3 * window.width)
+});
 export default drawerNavigator;

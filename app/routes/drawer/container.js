@@ -2,16 +2,16 @@ import { View, StyleSheet } from 'react-native';
 import React, { Component, PropTypes } from 'react';
 
 const propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.node
 };
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-    },
+        flex: 1
+    }
 });
 
 class Container extends Component {
-    render() {
+    render () {
         return (
             <View style={styles.container}>
                 {this.props.children}

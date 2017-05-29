@@ -1,9 +1,9 @@
 import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import { Dimensions } from 'react-native';
 import DrawerMenu from './drawerMenu';
-import ReactWall from '../reactWall/';
-import ReactMap from '../reactMap/';
-import Settings from '../settings/';
+import ReactWall from './routes/reactWall/';
+import ReactMap from './routes/reactMap/';
+import Settings from './routes/settings/';
 
 const window = Dimensions.get('window');
 // here add sceen for navigation

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { COLOR, ThemeProvider, Toolbar } from 'react-native-material-ui';
-import Container from '../drawer/container';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Header from '../../components/header.js';
+import Container from '../../container';
+import Header from '../../../../components/header.js';
+
 const uiTheme = {
   palette: {
     primaryColor: COLOR.grey500,
@@ -11,17 +11,16 @@ const uiTheme = {
   },
 };
 
-class reactWallSceen extends Component {
+class SettingsScene extends Component {
   render () {
-    const { errorToken } = this.props;
     return (
           <ThemeProvider uiTheme={uiTheme}>
             <Container>
               <Header navigatorLeft={ () => this.props.navigation.navigate('DrawerOpen')}
-                      title="React Wall"/>
+                      title="React Settings"/>
               <View style={styles.container}>
                 <Text style={styles.welcome}>
-                  Welcome to ReactWall!
+                  Welcome to Settings
                 </Text>
               </View>
             </Container>
@@ -44,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default reactWallSceen;
+export default SettingsScene;

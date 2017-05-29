@@ -30,7 +30,6 @@ const uiTheme = {
     typography: {
         buttons: {
             fontWeight: '400',
-            fontFamily: 'sans-serif',
             fontSize: 20
         }
     }

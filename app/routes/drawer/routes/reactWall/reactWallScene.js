@@ -28,7 +28,7 @@ class reactWallSceen extends Component {
     }
 }
 reactWallSceen.propTypes = {
-    navigation: PropTypes.func
+    navigation: PropTypes.object
 };
 const styles = StyleSheet.create({
     container: {

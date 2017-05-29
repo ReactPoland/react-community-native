@@ -6,7 +6,7 @@ class Header extends Component {
     render () {
         return (
             <Toolbar style={toolbarStyle}
-              leftElement="arrow"
+              leftElement="menu"
               onLeftElementPress={this.props.navigatorLeft}
               centerElement={this.props.title}
             />
@@ -28,7 +28,7 @@ const toolbarStyle = {
     }
 };
 Header.propTypes = {
-    navigatorLeft: PropTypes.string,
+    navigatorLeft: PropTypes.func,
     title: PropTypes.string
 };
 

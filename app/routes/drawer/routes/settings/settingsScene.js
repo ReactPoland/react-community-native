@@ -29,7 +29,7 @@ class SettingsScene extends Component {
     }
 }
 SettingsScene.propTypes = {
-    navigation: PropTypes.func
+    navigation: PropTypes.object
 };
 const styles = StyleSheet.create({
     container: {

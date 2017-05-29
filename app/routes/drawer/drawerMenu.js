@@ -140,7 +140,7 @@ export default class DrawerMenu extends Component {
     }
 }
 DrawerMenu.propTypes = {
-    navigation: PropTypes.func
+    navigation: PropTypes.object
 };
 const styles = StyleSheet.create({
     container: {

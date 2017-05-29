@@ -15,15 +15,15 @@ const propTypes = {
     navigation: PropTypes.object
 };
 
-class SettingsScene extends Component {
+class EventSceen extends Component {
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
                 <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Settings" />
+                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Event" />
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
-                          Welcome to Settings
+                            Welcome to Event!
                         </Text>
                     </View>
                 </Container>
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
     }
 });
 
-SettingsScene.propTypes = propTypes;
+EventSceen.propTypes = propTypes;
 
-export default SettingsScene;
+export default EventSceen;

@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import Container from '../../container';
 import Header from '../../../../components/header.js';
-
 const uiTheme = {
     palette: {
         primaryColor: COLOR.grey500,
@@ -15,15 +14,15 @@ const propTypes = {
     navigation: PropTypes.object
 };
 
-class SettingsScene extends Component {
+class ArticlesScene extends Component {
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
                 <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Settings" />
+                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Articles" />
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
-                          Welcome to Settings
+                            Welcome to Articles!
                         </Text>
                     </View>
                 </Container>
@@ -46,6 +45,6 @@ const styles = StyleSheet.create({
     }
 });
 
-SettingsScene.propTypes = propTypes;
+ArticlesScene.propTypes = propTypes;
 
-export default SettingsScene;
+export default ArticlesScene;

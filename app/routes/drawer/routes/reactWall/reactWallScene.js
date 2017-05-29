@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import Container from '../../container';
 import Header from '../../../../components/header.js';
-import PropTypes from 'prop-types';
+
 const uiTheme = {
     palette: {
         primaryColor: COLOR.grey500,
@@ -11,7 +11,11 @@ const uiTheme = {
     }
 };
 
-class reactWallSceen extends Component {
+const propTypes = {
+    navigation: PropTypes.object
+};
+
+class ReactWallSceen extends Component {
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
@@ -27,9 +31,7 @@ class reactWallSceen extends Component {
         );
     }
 }
-reactWallSceen.propTypes = {
-    navigation: PropTypes.object
-};
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -44,4 +46,6 @@ const styles = StyleSheet.create({
     }
 });
 
-export default reactWallSceen;
+ReactWallSceen.propTypes = propTypes;
+
+export default ReactWallSceen;

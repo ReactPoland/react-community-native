@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     StyleSheet,
     StatusBar,
@@ -6,9 +6,12 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { ThemeProvider, Toolbar, Drawer } from 'react-native-material-ui';
 import Container from './container';
+
+const propTypes = {
+    navigation: PropTypes.object
+};
 
 const uiTheme = {
     palette: {
@@ -100,10 +103,10 @@ export default class DrawerMenu extends Component {
                                   },
                                   {
                                       value: 'Best Practices',
-                                      active: this.state.active === 'Best Practices',
+                                      active: this.state.active === 'BestPractices',
                                       onPress: () => {
-                                          this.setState({ active: 'Best Practices' });
-                                          this.props.navigation.navigate('Best Practices');
+                                          this.setState({ active: 'BestPractices' });
+                                          this.props.navigation.navigate('BestPractices');
                                       }
                                   },
                                   {
@@ -139,9 +142,9 @@ export default class DrawerMenu extends Component {
         );
     }
 }
-DrawerMenu.propTypes = {
-    navigation: PropTypes.object
-};
+
+DrawerMenu.propTypes = propTypes;
+
 const styles = StyleSheet.create({
     container: {
         flex: 1

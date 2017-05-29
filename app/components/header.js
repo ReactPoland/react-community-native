@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Toolbar } from 'react-native-material-ui';
 
-class header extends Component {
+class Header extends Component {
     render () {
         return (
             <Toolbar style={toolbarStyle}
-              leftElement='arrow'
+              leftElement="arrow"
               onLeftElementPress={this.props.navigatorLeft}
               centerElement={this.props.title}
             />
@@ -14,17 +15,21 @@ class header extends Component {
 }
 const toolbarStyle = {
     container: {
-      height: 70,
-      paddingTop: 20,
-      backgroundColor: '#bababa',
+        height: 70,
+        paddingTop: 20,
+        backgroundColor: '#bababa'
     },
     leftElement: {
-      color: 'black'
+        color: 'black'
     },
     titleText: {
-      color: 'black',
-      marginLeft: 90,
+        color: 'black',
+        marginLeft: 90
     }
-}
+};
+Header.propTypes = {
+    navigatorLeft: PropTypes.string,
+    title: PropTypes.string
+};
 
-export default header;
+export default Header;

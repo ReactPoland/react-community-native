@@ -24,4 +24,5 @@ const drawerNavigator = DrawerNavigator({
     },
     drawerWidth: (2 / 3 * window.width)
 });
+
 export default drawerNavigator;

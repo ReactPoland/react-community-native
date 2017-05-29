@@ -20,7 +20,10 @@ const stackNavigator = StackNavigator({
     Events: { screen: Events },
     Tutorials: { screen: Tutorials }
 }, {
-    headerMode: 'none'
+    headerMode: 'none',
+    transitionConfig: () => ({
+        screenInterpolator: sceneProps => {}
+    })
 });
 const drawerNavigator = DrawerNavigator({
     Home: { screen: ReactWall },

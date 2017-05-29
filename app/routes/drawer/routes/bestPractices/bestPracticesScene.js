@@ -11,11 +11,10 @@ const uiTheme = {
     }
 };
 
-const propTypes = {
-    navigation: PropTypes.object
-};
-
 class BestPracticesScene extends Component {
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
@@ -45,7 +44,5 @@ const styles = StyleSheet.create({
         margin: 10
     }
 });
-
-BestPracticesScene.propTypes = propTypes;
 
 export default BestPracticesScene;

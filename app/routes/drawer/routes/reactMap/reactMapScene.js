@@ -4,11 +4,10 @@ import { ThemeProvider } from 'react-native-material-ui';
 import Container from '../../container';
 import Header from '../../../../components/header.js';
 
-const propTypes = {
-    navigation: PropTypes.object
-};
-
 class ReactMapScene extends Component {
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
         return (
             <ThemeProvider>
@@ -38,7 +37,5 @@ const styles = StyleSheet.create({
         margin: 10
     }
 });
-
-ReactMapScene.propTypes = propTypes;
 
 export default ReactMapScene;

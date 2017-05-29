@@ -9,10 +9,6 @@ import {
 import { ThemeProvider, Toolbar, Drawer } from 'react-native-material-ui';
 import Container from './container';
 
-const propTypes = {
-    navigation: PropTypes.object
-};
-
 const uiTheme = {
     palette: {
         primaryColor: '#000',
@@ -45,7 +41,9 @@ export default class DrawerMenu extends Component {
             active: 'ReactWall'
         };
     }
-
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
@@ -166,8 +164,6 @@ export default class DrawerMenu extends Component {
         );
     }
 }
-
-DrawerMenu.propTypes = propTypes;
 
 const styles = StyleSheet.create({
     container: {

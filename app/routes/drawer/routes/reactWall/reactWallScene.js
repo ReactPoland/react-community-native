@@ -11,11 +11,10 @@ const uiTheme = {
     }
 };
 
-const propTypes = {
-    navigation: PropTypes.object
-};
-
 class ReactWallSceen extends Component {
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
@@ -45,7 +44,5 @@ const styles = StyleSheet.create({
         margin: 10
     }
 });
-
-ReactWallSceen.propTypes = propTypes;
 
 export default ReactWallSceen;

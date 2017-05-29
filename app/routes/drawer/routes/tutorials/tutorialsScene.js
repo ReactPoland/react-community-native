@@ -9,10 +9,10 @@ const uiTheme = {
         accentColor: COLOR.grey500
     }
 };
-const propTypes = {
-    navigation: PropTypes.object
-};
 class TutorialsScene extends Component {
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
@@ -42,7 +42,5 @@ const styles = StyleSheet.create({
         margin: 10
     }
 });
-
-TutorialsScene.propTypes = propTypes;
 
 export default TutorialsScene;

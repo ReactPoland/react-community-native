@@ -89,48 +89,72 @@ export default class DrawerMenu extends Component {
                                       value: 'ReactWall',
                                       active: this.state.active === 'ReactWall',
                                       onPress: () => {
-                                          this.setState({ active: 'ReactWall' });
-                                          this.props.navigation.navigate('ReactWall');
+                                          if (this.state.active !== 'ReactWall') {
+                                              this.setState({ active: 'ReactWall' });
+                                              this.props.navigation.navigate('ReactWall');
+                                          } else {
+                                              this.props.navigation.navigate('DrawerClose');
+                                          }
                                       }
                                   },
                                   {
                                       value: 'ReactMap',
                                       active: this.state.active === 'ReactMap',
                                       onPress: () => {
-                                          this.setState({ active: 'ReactMap' });
-                                          this.props.navigation.navigate('ReactMap');
+                                          if (this.state.active !== 'ReactMap') {
+                                              this.setState({ active: 'ReactMap' });
+                                              this.props.navigation.navigate('ReactMap');
+                                          } else {
+                                              this.props.navigation.navigate('DrawerClose');
+                                          }
                                       }
                                   },
                                   {
                                       value: 'Best Practices',
                                       active: this.state.active === 'BestPractices',
                                       onPress: () => {
-                                          this.setState({ active: 'BestPractices' });
-                                          this.props.navigation.navigate('BestPractices');
+                                          if (this.state.active !== 'BestPractices') {
+                                              this.setState({ active: 'BestPractices' });
+                                              this.props.navigation.navigate('BestPractices');
+                                          } else {
+                                              this.props.navigation.navigate('DrawerClose');
+                                          }
                                       }
                                   },
                                   {
                                       value: 'Tutorials',
                                       active: this.state.active === 'Tutorials',
                                       onPress: () => {
-                                          this.setState({ active: 'Tutorials' });
-                                          this.props.navigation.navigate('Tutorials');
+                                          if (this.state.active !== 'Tutorials') {
+                                              this.setState({ active: 'Tutorials' });
+                                              this.props.navigation.navigate('Tutorials');
+                                          } else {
+                                              this.props.navigation.navigate('DrawerClose');
+                                          }
                                       }
                                   },
                                   {
                                       value: 'Articles',
                                       active: this.state.active === 'Articles',
                                       onPress: () => {
-                                          this.setState({ active: 'Articles' });
-                                          this.props.navigation.navigate('Articles');
+                                          if (this.state.active !== 'Articles') {
+                                              this.setState({ active: 'Articles' });
+                                              this.props.navigation.navigate('Articles');
+                                          } else {
+                                              this.props.navigation.navigate('DrawerClose');
+                                          }
                                       }
                                   },
                                   {
                                       value: 'Events',
                                       active: this.state.active === 'Events',
                                       onPress: () => {
-                                          this.setState({ active: 'Events' });
-                                          this.props.navigation.navigate('Events');
+                                          if (this.state.active !== 'Events') {
+                                              this.setState({ active: 'Events' });
+                                              this.props.navigation.navigate('Events');
+                                          } else {
+                                              this.props.navigation.navigate('DrawerClose');
+                                          }
                                       }
                                   }
                               ]}

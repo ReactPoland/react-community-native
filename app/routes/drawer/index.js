@@ -1,7 +1,7 @@
 import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import { Dimensions } from 'react-native';
 import DrawerMenu from './drawerMenu';
-import ReactWall from './routes/reactWall/';
+import ReactWall from '../reactWall/';
 import ReactMap from './routes/reactMap/';
 import Settings from './routes/settings/';
 import Articles from './routes/articles/';

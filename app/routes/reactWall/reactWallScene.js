@@ -13,6 +13,9 @@ const uiTheme = {
 };
 
 class ReactWallSceen extends Component {
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
         return (
             <ThemeProvider uiTheme={uiTheme}>
@@ -29,9 +32,7 @@ class ReactWallSceen extends Component {
         );
     }
 }
-ReactWallSceen.propTypes = {
-    navigation: PropTypes.func
-};
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

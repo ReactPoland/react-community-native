@@ -14,7 +14,7 @@ class Header extends Component {
             <View style={styles.container}>
                 <View style={styles.content}>
                     <TouchableOpacity onPress={this.props.navigatorLeft}>
-                        <Icon name="bars" size={24} color="#000" style={[styles.leftElement, { marginLeft: 10 }]} />
+                        <Icon name="bars" size={30} color="#000" style={[styles.leftElement, { marginLeft: 10 }]} />
                     </TouchableOpacity>
                     <Text style={styles.textStyle}>
                         {this.props.title}
@@ -39,16 +39,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     leftElement: {
-        width: 30
+        marginTop: 2,
+        width: 35
     },
     rightElement: {
-        width: 30
+        marginTop: 2,
+        width: 35
     },
     textStyle: {
         width: 200,
         color: 'black',
         textAlign: 'center',
-        fontSize: 24
+        fontSize: 26
     }
 });
 export default Header;

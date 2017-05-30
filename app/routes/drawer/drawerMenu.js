@@ -57,12 +57,12 @@ export default class DrawerMenu extends Component {
                         }
                         }>
                             <View style={styles.userIco}>
-                                <TouchableOpacity onPress={() => {
+                                <TouchableOpacity style={styles.settingsIco} onPress={() => {
                                     this.setState({ active: 'Settings' });
                                     this.props.navigation.navigate('Settings');
                                 }
                                 }>
-                                    <Icon name="cog" size={35} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 40, height: 40 }} />
+                                    <Icon name="cog" size={35} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 30, height: 40 }} />
                                 </TouchableOpacity>
                                 <Image
                                   style={
@@ -179,5 +179,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333333',
         marginBottom: 5
+    },
+    settingsIco: {
+        width: 45
     }
 });

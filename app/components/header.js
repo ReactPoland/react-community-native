@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Toolbar } from 'react-native-material-ui';
+import { Dimensions } from 'react-native';
+const window = Dimensions.get('window');
 
 class Header extends Component {
     render () {
@@ -24,7 +26,18 @@ const toolbarStyle = {
     },
     titleText: {
         color: 'black',
-        marginLeft: 90
+        marginTop: 20
+    },
+    centerElementContainer:
+    {
+        position: 'absolute',
+        height: 80,
+        width: window.width - 2 / 8 * window.width,
+        marginLeft: 1 / 8 * window.width,
+        marginRight: 1 / 8 * window.width,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 };
 Header.propTypes = {

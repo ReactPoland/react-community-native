@@ -62,7 +62,7 @@ export default class DrawerMenu extends Component {
                                     this.props.navigation.navigate('Settings');
                                 }
                                 }>
-                                    <Icon name="cog" size={30} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 40, height: 40 }} />
+                                    <Icon name="cog" size={35} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 40, height: 40 }} />
                                 </TouchableOpacity>
                                 <Image
                                   style={

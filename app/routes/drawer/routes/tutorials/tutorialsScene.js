@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
-import Container from '../drawer/container';
-import Header from '../../components/header.js';
-import PropTypes from 'prop-types';
-
+import Container from '../../container';
+import Header from '../../../../components/header.js';
 const uiTheme = {
     palette: {
         primaryColor: COLOR.grey500,
         accentColor: COLOR.grey500
     }
 };
-
-class ReactWallSceen extends Component {
+class TutorialsScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
     };
@@ -20,11 +17,10 @@ class ReactWallSceen extends Component {
         return (
             <ThemeProvider uiTheme={uiTheme}>
                 <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')}
-                      title="React Wall" />
+                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Tutorials" />
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
-                          Welcome to ReactWall!
+                            Welcome to Tutorials!
                         </Text>
                     </View>
                 </Container>
@@ -47,4 +43,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ReactWallSceen;
+export default TutorialsScene;

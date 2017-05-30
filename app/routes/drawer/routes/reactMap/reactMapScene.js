@@ -1,30 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { COLOR, ThemeProvider } from 'react-native-material-ui';
-import Container from '../drawer/container';
-import Header from '../../components/header.js';
-import PropTypes from 'prop-types';
+import { ThemeProvider } from 'react-native-material-ui';
+import Container from '../../container';
+import Header from '../../../../components/header.js';
 
-const uiTheme = {
-    palette: {
-        primaryColor: COLOR.grey500,
-        accentColor: COLOR.grey500
-    }
-};
-
-class ReactWallSceen extends Component {
+class ReactMapScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
     };
     render () {
         return (
-            <ThemeProvider uiTheme={uiTheme}>
+            <ThemeProvider>
                 <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')}
-                      title="React Wall" />
+                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Map" />
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
-                          Welcome to ReactWall!
+                            Welcome to ReactMap!
                         </Text>
                     </View>
                 </Container>
@@ -47,4 +38,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ReactWallSceen;
+export default ReactMapScene;

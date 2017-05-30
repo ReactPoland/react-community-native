@@ -1,48 +1,53 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Toolbar } from 'react-native-material-ui';
-import { Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 const window = Dimensions.get('window');
 
 class Header extends Component {
+    static propTypes = {
+        navigatorLeft: PropTypes.func,
+        title: PropTypes.string
+    };
     render () {
         return (
-            <Toolbar style={toolbarStyle}
-              leftElement="menu"
-              onLeftElementPress={this.props.navigatorLeft}
-              centerElement={this.props.title}
-            />
+            <View style={styles.container}>
+                <View style={styles.content}>
+                    <TouchableOpacity onPress={this.props.navigatorLeft}>
+                        <Icon name="bars" size={30} color="#000" style={[styles.leftElement, { marginLeft: 10 }]} />
+                    </TouchableOpacity>
+                    <Text style={styles.textStyle}>
+                        {this.props.title}
+                    </Text>
+                    <View style={[styles.rightElement, { marginRight: 10 }]} />
+                </View>
+            </View>
         );
     }
 }
-const toolbarStyle = {
+const styles = StyleSheet.create({
     container: {
-        height: 70,
+        backgroundColor: '#EEE',
+        width: window.width,
+        height: 80,
         paddingTop: 20,
-        backgroundColor: '#bababa'
+        justifyContent: 'center'
+    },
+    content: {
+        width: window.width,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     leftElement: {
-        color: 'black'
+        width: 30
     },
-    titleText: {
-        color: 'black',
-        marginTop: 20
+    rightElement: {
+        width: 30
     },
-    centerElementContainer:
-    {
-        position: 'absolute',
-        height: 80,
-        width: window.width - 2 / 8 * window.width,
-        marginLeft: 1 / 8 * window.width,
-        marginRight: 1 / 8 * window.width,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+    textStyle: {
+        width: 200,
+        textAlign: 'center',
+        fontSize: 24
     }
-};
-Header.propTypes = {
-    navigatorLeft: PropTypes.func,
-    title: PropTypes.string
-};
-
+});
 export default Header;

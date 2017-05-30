@@ -19,7 +19,7 @@ class BestPracticesScene extends Component {
         return (
             <ThemeProvider uiTheme={uiTheme}>
                 <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Practices" />
+                    <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Articles" />
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
                             Welcome to Best Practices!

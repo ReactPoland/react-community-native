@@ -14,7 +14,7 @@ class Header extends Component {
             <View style={styles.container}>
                 <View style={styles.content}>
                     <TouchableOpacity onPress={this.props.navigatorLeft}>
-                        <Icon name="bars" size={30} color="#000" style={[styles.leftElement, { marginLeft: 10 }]} />
+                        <Icon name={this.props.leftIcon} size={30} color="#000" style={[styles.leftElement, { marginLeft: 10 }]} />
                     </TouchableOpacity>
                     <Text style={styles.textStyle}>
                         {this.props.title}

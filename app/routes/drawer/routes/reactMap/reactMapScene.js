@@ -12,7 +12,7 @@ class ReactMapScene extends Component {
         return (
             <ThemeProvider>
                 <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Map" />
+                    <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Articles" />
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
                             Welcome to ReactMap!

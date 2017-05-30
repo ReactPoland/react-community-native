@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { ThemeProvider, Toolbar, Drawer } from 'react-native-material-ui';
 import Container from './container';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const uiTheme = {
     palette: {
@@ -61,13 +62,7 @@ export default class DrawerMenu extends Component {
                                     this.props.navigation.navigate('Settings');
                                 }
                                 }>
-                                    <Image
-                                      style={{ marginLeft: 10, marginTop: 10, width: 40, height: 40 }}
-                                      source={
-                                      {
-                                          uri: 'http://www.myiconfinder.com/uploads/iconsets/128-128-03a6912f2105fa73cd2e7798bd0a7ffa-gear.png'
-                                      }}
-                                    />
+                                    <Icon name="cog" size={30} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 40, height: 40 }} />
                                 </TouchableOpacity>
                                 <Image
                                   style={

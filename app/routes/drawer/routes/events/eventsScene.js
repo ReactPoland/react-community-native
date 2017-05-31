@@ -20,6 +20,7 @@ class EventSceen extends Component {
             <ThemeProvider uiTheme={uiTheme}>
                 <Container>
                     <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Articles" />
+
                     <View style={styles.container}>
                         <Text style={styles.welcome}>
                             Welcome to Event!

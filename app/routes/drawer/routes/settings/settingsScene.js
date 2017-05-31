@@ -9,6 +9,7 @@ import GeneralAppInfo from './generalAppInfo/';
 import UserInfo from './userInfo/';
 const window = Dimensions.get('window');
 
+
 class SettingsScene extends Component {
     static propTypes = {
         navigation: PropTypes.object

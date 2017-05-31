@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Switch, TouchableOpacity, Dimensions } from 'react-native';
-import { COLOR, ThemeProvider } from 'react-native-material-ui';
+import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
+import { ThemeProvider } from 'react-native-material-ui';
 import { StackNavigator } from 'react-navigation';
 import Container from '../../container';
 import Header from '../../../../components/header.js';
+import TouchableLable from '../../../../components/touchableLable';
 import GeneralAppInfo from './generalAppInfo/';
 import UserInfo from './userInfo/';
 const window = Dimensions.get('window');
@@ -30,27 +31,9 @@ class SettingsScene extends Component {
                                 <Switch />
                             </View>
                         </View>
-                        <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('UserInfo')} title="User Info">
-                            <View>
-                                <Text style={styles.textStyle}>
-                                    User Info
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('General')} title="General">
-                            <View>
-                                <Text style={styles.textStyle}>
-                                    General App Info
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.touchableStyle} onPress={() => this.props.navigation.navigate('Login')} title="User Info">
-                            <View>
-                                <Text style={styles.textStyle}>
-                                    LogOut
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
+                        <TouchableLable leftElement="User Info" navigator={() => this.props.navigation.navigate('UserInfo')} />
+                        <TouchableLable leftElement="General App Info" navigator={() => this.props.navigation.navigate('General')} />
+                        <TouchableLable leftElement="LogOut" navigator={() => this.props.navigation.navigate('Login')} />
                     </View>
                 </Container>
             </ThemeProvider>

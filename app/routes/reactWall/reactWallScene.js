@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { COLOR, ThemeProvider } from 'react-native-material-ui';
+import { View, Text, StyleSheet } from 'react-native';
 import Header from '../../components/header.js';
 import PropTypes from 'prop-types';
-const window = Dimensions.get("window")
-const uiTheme = {
-    palette: {
-        primaryColor: COLOR.grey500,
-        accentColor: COLOR.grey500
-    }
-};
 
 class ReactWallSceen extends Component {
     static propTypes = {

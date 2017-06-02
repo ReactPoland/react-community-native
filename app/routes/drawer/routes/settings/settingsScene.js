@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
 import Header from '../../../../components/header.js';
 import TouchableLable from '../../../../components/touchableLable';
 const window = Dimensions.get('window');
-
 class SettingsScene extends Component {
     static propTypes = {
         navigation: PropTypes.object

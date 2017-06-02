@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
-import Container from '../drawer/container';
 import Header from '../../components/header.js';
 import PropTypes from 'prop-types';
-
+const window = Dimensions.get("window")
 const uiTheme = {
     palette: {
         primaryColor: COLOR.grey500,
@@ -18,16 +17,14 @@ class ReactWallSceen extends Component {
     };
     render () {
         return (
-            <ThemeProvider uiTheme={uiTheme}>
-                <Container>
-                    <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Wall" />
-                    <View style={styles.container}>
-                        <Text style={styles.welcome}>
-                          Welcome to ReactWall!
-                        </Text>
-                    </View>
-                </Container>
-            </ThemeProvider>
+            <View style={{ flex: 1 }}>
+                <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Wall" />
+                <View style={styles.container}>
+                    <Text style={styles.welcome}>
+                      Welcome to ReactWall!
+                    </Text>
+                </View>
+            </View>
         );
     }
 }
@@ -37,7 +34,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF'
+        backgroundColor: '#FFF'
     },
     welcome: {
         fontSize: 20,

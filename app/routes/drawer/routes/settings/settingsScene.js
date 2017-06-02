@@ -17,11 +17,10 @@ class SettingsScene extends Component {
                         <View style={styles.viewStyle}>
                             <Text style={[
                                 styles.textStyle, {
-                                    marginTop: 10
                                 }
                             ]}>
                               Open website in App
-                          </Text>
+                            </Text>
                             <Switch />
                         </View>
                     </View>
@@ -43,8 +42,8 @@ const styles = StyleSheet.create({
         height: 50,
         width: window.width,
         backgroundColor: '#EEE',
-        display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
         paddingLeft: 20,
         paddingRight: 20,
         marginTop: 10

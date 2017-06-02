@@ -13,18 +13,10 @@ class LableSettings extends Component {
         return (
             <View style={styles.touchableStyle}>
                 <View style={styles.viewStyle}>
-                    <Text style={[
-                        styles.textStyle, {
-                            marginTop: 10
-                        }
-                    ]}>
+                    <Text style={styles.textStyle}>
                         {this.props.leftElement}
                     </Text>
-                    <Text style={[
-                        styles.textStyle, {
-                            marginTop: 10
-                        }
-                    ]}>
+                    <Text style={styles.textStyle}>
                         {this.props.rightElement}
                     </Text>
                 </View>
@@ -38,8 +30,8 @@ const styles = StyleSheet.create({
         height: 50,
         width: window.width,
         backgroundColor: '#EEE',
-        display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
         paddingLeft: 20,
         paddingRight: 20,
         marginTop: 10
@@ -51,8 +43,7 @@ const styles = StyleSheet.create({
         width: window.width - 40
     },
     textStyle: {
-        fontSize: 20,
-        fontFamily: 'Cochin'
+        fontSize: 20
     }
 });
 

@@ -7,12 +7,11 @@ import {
 } from 'react-native';
 import DrawerMenuElement from '../../components/drawerMenuElement.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 export default class DrawerMenu extends Component {
     constructor (props, context) {
         super(props, context);
         this.state = {
-            active: 'ReactWall'
+            drawerElements: ['ReactWall', 'ReactMap', 'BestPractices', 'Tutorials', 'Articles', 'Events']
         };
     }
     static propTypes = {
@@ -41,54 +40,16 @@ export default class DrawerMenu extends Component {
                       />
                 </View>
                 <View>
-                    <DrawerMenuElement onPressFunc={() => {
-                        if (this.state.active !== 'ReactWall') {
-                            this.props.navigation.navigate('ReactWall');
-                        } else {
-                            this.props.navigation.navigate('DrawerClose');
-                        }
-                    }}
-                      text="ReactWall" />
-                    <DrawerMenuElement onPressFunc={() => {
-                        if (this.state.active !== 'ReactMap') {
-                            this.props.navigation.navigate('ReactMap');
-                        } else {
-                            this.props.navigation.navigate('DrawerClose');
-                        }
-                    }}
-                      text="ReactMap" />
-                    <DrawerMenuElement onPressFunc={() => {
-                        if (this.state.active !== 'BestPractices') {
-                            this.props.navigation.navigate('BestPractices');
-                        } else {
-                            this.props.navigation.navigate('DrawerClose');
-                        }
-                    }}
-                      text="BestPractices" />
-                    <DrawerMenuElement onPressFunc={() => {
-                        if (this.state.active !== 'Tutorials') {
-                            this.props.navigation.navigate('Tutorials');
-                        } else {
-                            this.props.navigation.navigate('DrawerClose');
-                        }
-                    }}
-                      text="Tutorials" />
-                    <DrawerMenuElement onPressFunc={() => {
-                        if (this.state.active !== 'Articles') {
-                            this.props.navigation.navigate('Articles');
-                        } else {
-                            this.props.navigation.navigate('DrawerClose');
-                        }
-                    }}
-                      text="Articles" />
-                    <DrawerMenuElement onPressFunc={() => {
-                        if (this.state.active !== 'Events') {
-                            this.props.navigation.navigate('Events');
-                        } else {
-                            this.props.navigation.navigate('DrawerClose');
-                        }
-                    }}
-                      text="Events" />
+                    {this.state.drawerElements.map((item, i) => {
+                        return <DrawerMenuElement key={i} onPressFunc={() => {
+                            if (this.state.active !== item) {
+                                this.props.navigation.navigate(item);
+                            } else {
+                                this.props.navigation.navigate(item);
+                            }
+                        }}
+                          text={item} />;
+                    })}
                 </View>
             </View>
         );

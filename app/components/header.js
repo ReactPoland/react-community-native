@@ -7,7 +7,8 @@ const window = Dimensions.get('window');
 class Header extends Component {
     static propTypes = {
         navigatorLeft: PropTypes.func,
-        title: PropTypes.string
+        title: PropTypes.string,
+        leftIcon: PropTypes.string
     };
     render () {
         return (
@@ -29,8 +30,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#EEE',
         width: window.width,
-        height: 80,
-        paddingTop: 20,
+        height: 60,
         justifyContent: 'center'
     },
     content: {

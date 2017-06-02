@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
-import { ThemeProvider } from 'react-native-material-ui';
 import { StackNavigator } from 'react-navigation';
-import Container from '../../container';
 import Header from '../../../../components/header.js';
 import TouchableLable from '../../../../components/touchableLable';
 import GeneralAppInfo from './generalAppInfo/';
@@ -15,28 +13,26 @@ class SettingsScene extends Component {
     };
     render () {
         return (
-            <ThemeProvider>
-                <Container>
-                    <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Settings" />
-                    <View style={styles.container}>
-                        <View style={styles.touchableStyle}>
-                            <View style={styles.viewStyle}>
-                                <Text style={[
-                                    styles.textStyle, {
-                                        marginTop: 10
-                                    }
-                                ]}>
-                                  Open website in App
-                              </Text>
-                                <Switch />
-                            </View>
+            <View style={{ flex: 1 }}>
+                <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Settings" />
+                <View style={styles.container}>
+                    <View style={styles.touchableStyle}>
+                        <View style={styles.viewStyle}>
+                            <Text style={[
+                                styles.textStyle, {
+                                    marginTop: 10
+                                }
+                            ]}>
+                              Open website in App
+                          </Text>
+                            <Switch />
                         </View>
-                        <TouchableLable leftElement="User Info" navigator={() => this.props.navigation.navigate('UserInfo')} />
-                        <TouchableLable leftElement="General App Info" navigator={() => this.props.navigation.navigate('General')} />
-                        <TouchableLable leftElement="LogOut" navigator={() => this.props.navigation.navigate('Login')} />
                     </View>
-                </Container>
-            </ThemeProvider>
+                    <TouchableLable leftElement="User Info" navigator={() => this.props.navigation.navigate('UserInfo')} />
+                    <TouchableLable leftElement="General App Info" navigator={() => this.props.navigation.navigate('General')} />
+                    <TouchableLable leftElement="LogOut" navigator={() => this.props.navigation.navigate('Login')} />
+                </View>
+            </View>
         );
     }
 }

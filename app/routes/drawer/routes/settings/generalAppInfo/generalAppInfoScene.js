@@ -15,16 +15,14 @@ class generalAppInfoScene extends Component {
     };
     render () {
         return (
-            <ThemeProvider>
-                <Container>
-                    <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.navigate('Home')} title="General Info" />
-                    <View style={styles.container}>
-                        <LableSettings leftElement="Version:" rightElement="0.0.1" />
-                        <LableSettings leftElement="Build:" rightElement="1" />
-                        <LableSettings leftElement="Authors:" rightElement="ReactPoland" />
-                    </View>
-                </Container>
-            </ThemeProvider>
+            <View style={{ flex: 1 }}>
+                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.navigate('Home')} title="General Info" />
+                <View style={styles.container}>
+                    <LableSettings leftElement="Version:" rightElement="0.0.1" />
+                    <LableSettings leftElement="Build:" rightElement="1" />
+                    <LableSettings leftElement="Authors:" rightElement="ReactPoland" />
+                </View>
+            </View>
         );
     }
 }

@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import {
     StyleSheet,
-    StatusBar,
     View,
     Image,
     TouchableOpacity
 } from 'react-native';
+import DrawerMenuElement from '../../components/drawerMenuElement.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class DrawerMenu extends Component {
@@ -20,9 +20,6 @@ export default class DrawerMenu extends Component {
     };
     render () {
         return (
-            <View>
-                <StatusBar translucent />
-                <View style={{ marginTop: 20 }} />
                 <View style={styles.container}>
                     <View style={styles.userIco}>
                         <TouchableOpacity style={styles.settingsIco} onPress={() => {
@@ -35,7 +32,7 @@ export default class DrawerMenu extends Component {
                         <Image
                           style={
                           {
-                              osition: 'absolute', marginTop: 25, marginLeft: 60, width: 150, height: 150, borderRadius: 150
+                              position: 'absolute', marginTop: 25, marginLeft: 60, width: 150, height: 150, borderRadius: 150
                           }}
                           source={
                           {
@@ -43,26 +40,80 @@ export default class DrawerMenu extends Component {
                           }}
                           />
                     </View>
+                    <View>
+                        <DrawerMenuElement onPressFunc={() => {
+                            if (this.state.active !== 'ReactWall') {
+                                this.props.navigation.navigate('ReactWall');
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text="ReactWall" />
+                        <DrawerMenuElement onPressFunc={() => {
+                            if (this.state.active !== 'ReactMap') {
+                                this.props.navigation.navigate('ReactMap');
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text="ReactMap" />
+                        <DrawerMenuElement onPressFunc={() => {
+                            if (this.state.active !== 'BestPractices') {
+                                this.props.navigation.navigate('BestPractices');
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text="BestPractices" />
+                        <DrawerMenuElement onPressFunc={() => {
+                            if (this.state.active !== 'Tutorials') {
+                                this.props.navigation.navigate('Tutorials');
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text="Tutorials" />
+                        <DrawerMenuElement onPressFunc={() => {
+                            if (this.state.active !== 'Articles') {
+                                this.props.navigation.navigate('Articles');
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text="Articles" />
+                        <DrawerMenuElement onPressFunc={() => {
+                            if (this.state.active !== 'Events') {
+                                this.props.navigation.navigate('Events');
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text="Events" />
+                    </View>
                 </View>
-            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#B38381'
+    },
+    touch: {
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: '#8A8A8A'
+    },
+    text: {
+        marginLeft: 25,
+        fontSize: 20
     },
     userIco: {
         height: 200
     },
     header: {
         backgroundColor: '#B38381'
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
     },
     instructions: {
         textAlign: 'center',

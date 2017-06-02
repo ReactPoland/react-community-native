@@ -33,6 +33,7 @@ const drawerNavigator = DrawerNavigator({
     contentOptions: {
         inactiveTintColor: '#e91e63'
     },
+    headerMode: 'none',
     drawerWidth: (2 / 3 * window.width)
 });
 

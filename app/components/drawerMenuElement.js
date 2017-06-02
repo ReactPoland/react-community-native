@@ -9,19 +9,19 @@ class DrawerMenu extends Component {
     };
     render () {
         return (
-            <TouchableOpacity style={styles.touch} onPress={this.props.onPressFunc}>
-                <View><Text style={styles.text}>{this.props.text}</Text></View>
+            <TouchableOpacity style={styles.touchableOpacityStyle} onPress={this.props.onPressFunc}>
+                <View><Text style={styles.textStyle}>{this.props.text}</Text></View>
             </TouchableOpacity>
         );
     }
 }
 const styles = StyleSheet.create({
-    touch: {
+    touchableOpacityStyle: {
         borderTopWidth: 1,
         borderBottomWidth: 1,
         borderColor: '#8A8A8A'
     },
-    text: {
+    textStyle: {
         paddingTop: 5,
         paddingBottom: 5,
         marginLeft: 25,

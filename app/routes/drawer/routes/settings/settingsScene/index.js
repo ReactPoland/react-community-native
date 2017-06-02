@@ -1,7 +1,7 @@
 import SettingsScene from './settingsScene';
 import { StackNavigator } from 'react-navigation';
-import GeneralAppInfo from './generalAppInfo/';
-import UserInfo from './userInfo/';
+import GeneralAppInfo from '../generalAppInfo/';
+import UserInfo from '../userInfo/';
 
 const SettingsStackScene = StackNavigator({
     Home: {

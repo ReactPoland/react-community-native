@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import Header from '../../../../../components/header';
-import LableSettings from '../../../../../components/lableSettings';
+import LabelSettings from '../../../../../components/labelSettings';
 const window = Dimensions.get('window');
 
 class reactWallSceen extends Component {
@@ -23,10 +23,10 @@ class reactWallSceen extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title="User Info" />
                 <View style={styles.container}>
-                    <LableSettings leftElement="Nick:" rightElement={this.props.userNick} />
-                    <LableSettings leftElement="Name:" rightElement={this.props.userName} />
-                    <LableSettings leftElement="Surname:" rightElement={this.props.userSurname} />
-                    <LableSettings leftElement="Email:" rightElement={this.props.userEmail} />
+                    <LabelSettings leftElement="Nick:" rightElement={this.props.userNick} />
+                    <LabelSettings leftElement="Name:" rightElement={this.props.userName} />
+                    <LabelSettings leftElement="Surname:" rightElement={this.props.userSurname} />
+                    <LabelSettings leftElement="Email:" rightElement={this.props.userEmail} />
                 </View>
             </View>
         );

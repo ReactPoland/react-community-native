@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import DrawerMenu from './drawerMenu';
 import ReactWall from '../reactWall/';
 import ReactMap from './routes/reactMap/';
-import Settings from './routes/settings/';
+import Settings from './routes/settings/settingsScene';
 import Articles from './routes/articles/';
 import BestPractices from './routes/bestPractices/';
 import Events from './routes/events/';

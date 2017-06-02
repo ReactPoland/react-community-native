@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default reactWallSceen;
+export default ReactWallSceen;

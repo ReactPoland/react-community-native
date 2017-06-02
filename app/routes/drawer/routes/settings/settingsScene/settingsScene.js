@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
 import Header from '../../../../../components/header.js';
-import TouchableSettings from '../../../../../components/touchableSettings';
+import TouchableSettings from '../touchableSettings';
 const window = Dimensions.get('window');
 
 class SettingsScene extends Component {

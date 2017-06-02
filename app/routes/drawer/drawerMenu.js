@@ -5,7 +5,7 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import DrawerMenuElement from '../../components/drawerMenuElement.js';
+import DrawerMenuElement from './drawerMenuElement.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 export default class DrawerMenu extends Component {
     constructor (props, contextStyle) {

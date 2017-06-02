@@ -8,10 +8,11 @@ import {
 import DrawerMenuElement from '../../components/drawerMenuElement.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 export default class DrawerMenu extends Component {
-    constructor (props, context) {
-        super(props, context);
+    constructor (props, contextStyle) {
+        super(props, contextStyle);
         this.state = {
-            drawerElements: ['ReactWall', 'ReactMap', 'BestPractices', 'Tutorials', 'Articles', 'Events']
+            drawerElements: ['ReactWall', 'ReactMap', 'BestPractices', 'Tutorials', 'Articles', 'Events'],
+            active: 'ReactWall'
         };
     }
     static propTypes = {
@@ -41,8 +42,9 @@ export default class DrawerMenu extends Component {
                         return <DrawerMenuElement key={i} onPressFunc={() => {
                             if (this.state.active !== item) {
                                 this.props.navigation.navigate(item);
+                                this.setState({ active: item });
                             } else {
-                                this.props.navigation.navigate(item);
+                                this.props.navigation.navigate('DrawerClose');
                             }
                         }}
                           text={item} />;
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#B38381'
     },
-    text: {
+    textStyle: {
         marginLeft: 25,
         fontSize: 20
     },

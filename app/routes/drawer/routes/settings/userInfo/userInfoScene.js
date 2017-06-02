@@ -21,7 +21,7 @@ class reactWallSceen extends Component {
     render () {
         return (
             <View style={{ flex: 1 }}>
-                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.navigate('Home')} title="User Info" />
+                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title="User Info" />
                 <View style={styles.container}>
                     <LableSettings leftElement="Nick:" rightElement={this.props.userNick} />
                     <LableSettings leftElement="Name:" rightElement={this.props.userName} />

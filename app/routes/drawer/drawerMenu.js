@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
     },
     touch: {
         borderTopWidth: 1,
+        borderColor: '#8A8A8A'
+    },
+    touchLast: {
         borderBottomWidth: 1,
         borderColor: '#8A8A8A'
     },

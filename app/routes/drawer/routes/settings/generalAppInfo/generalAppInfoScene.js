@@ -14,7 +14,7 @@ class generalAppInfoScene extends Component {
     render () {
         return (
             <View style={{ flex: 1 }}>
-                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.navigate('Home')} title="General Info" />
+                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title="General Info" />
                 <View style={styles.container}>
                     <LableSettings leftElement="Version:" rightElement="0.0.1" />
                     <LableSettings leftElement="Build:" rightElement="1" />

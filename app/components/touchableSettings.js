@@ -11,7 +11,7 @@ class LableSettings extends Component {
     };
     render () {
         return (
-            <TouchableOpacity style={styles.touchableStyle} onPress={this.props.navigator} title="User Info">
+            <TouchableOpacity style={styles.touchableElementStyle} onPress={this.props.navigator} title="User Info">
                 <View>
                     <Text style={styles.textStyle}>
                         {this.props.leftElement}
@@ -23,7 +23,7 @@ class LableSettings extends Component {
 }
 
 const styles = StyleSheet.create({
-    touchableStyle: {
+    touchableElementStyle: {
         height: 50,
         width: window.width,
         backgroundColor: '#EEE',

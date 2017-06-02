@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
 import Header from '../../../../../components/header.js';
-import TouchableLabel from '../../../../../components/touchableLabel';
+import TouchableSettings from '../../../../../components/touchableSettings';
 const window = Dimensions.get('window');
+
 class SettingsScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
@@ -12,7 +13,7 @@ class SettingsScene extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Settings" />
                 <View style={styles.container}>
-                    <View style={styles.touchableStyle}>
+                    <View style={styles.touchableElementStyle}>
                         <View style={styles.switchElementContainer}>
                             <Text style={[
                                 styles.textStyle, {
@@ -23,9 +24,9 @@ class SettingsScene extends Component {
                             <Switch />
                         </View>
                     </View>
-                    <TouchableLabel leftElement="User Info" navigator={() => this.props.navigation.navigate('UserInfo')} />
-                    <TouchableLabel leftElement="General App Info" navigator={() => this.props.navigation.navigate('General')} />
-                    <TouchableLabel leftElement="LogOut" navigator={() => this.props.navigation.navigate('Login')} />
+                    <TouchableSettings leftElement="User Info" navigator={() => this.props.navigation.navigate('UserInfo')} />
+                    <TouchableSettings leftElement="General App Info" navigator={() => this.props.navigation.navigate('General')} />
+                    <TouchableSettings leftElement="LogOut" navigator={() => this.props.navigation.navigate('Login')} />
                 </View>
             </View>
         );
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         height: window.height
     },
-    touchableStyle: {
+    touchableElementStyle: {
         height: 50,
         width: window.width,
         backgroundColor: '#EEE',

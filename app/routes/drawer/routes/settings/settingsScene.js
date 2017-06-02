@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import Header from '../../../../components/header.js';
 import TouchableLable from '../../../../components/touchableLable';
-import GeneralAppInfo from './generalAppInfo/';
-import UserInfo from './userInfo/';
 const window = Dimensions.get('window');
 
 class SettingsScene extends Component {
@@ -63,20 +60,4 @@ const styles = StyleSheet.create({
         fontFamily: 'Cochin'
     }
 });
-
-const SettingsStack = StackNavigator({
-    Home: {
-        screen: SettingsScene,
-        path: 'drawer'
-    },
-    General: {
-        screen: GeneralAppInfo,
-        path: 'general'
-    },
-    UserInfo: {
-        screen: UserInfo,
-        path: 'general'
-    }
-}, { headerMode: 'none' });
-
-export default SettingsStack;
+export default SettingsScene;

@@ -20,77 +20,77 @@ export default class DrawerMenu extends Component {
     };
     render () {
         return (
-                <View style={styles.container}>
-                    <View style={styles.userIco}>
-                        <TouchableOpacity style={styles.settingsIco} onPress={() => {
-                            this.setState({ active: 'Settings' });
-                            this.props.navigation.navigate('Settings');
-                        }
-                        }>
-                            <Icon name="cog" size={35} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 30, height: 40 }} />
-                        </TouchableOpacity>
-                        <Image
-                          style={
-                          {
-                              position: 'absolute', marginTop: 25, marginLeft: 60, width: 150, height: 150, borderRadius: 150
-                          }}
-                          source={
-                          {
-                              uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'
-                          }}
-                          />
-                    </View>
-                    <View>
-                        <DrawerMenuElement onPressFunc={() => {
-                            if (this.state.active !== 'ReactWall') {
-                                this.props.navigation.navigate('ReactWall');
-                            } else {
-                                this.props.navigation.navigate('DrawerClose');
-                            }
-                        }}
-                          text="ReactWall" />
-                        <DrawerMenuElement onPressFunc={() => {
-                            if (this.state.active !== 'ReactMap') {
-                                this.props.navigation.navigate('ReactMap');
-                            } else {
-                                this.props.navigation.navigate('DrawerClose');
-                            }
-                        }}
-                          text="ReactMap" />
-                        <DrawerMenuElement onPressFunc={() => {
-                            if (this.state.active !== 'BestPractices') {
-                                this.props.navigation.navigate('BestPractices');
-                            } else {
-                                this.props.navigation.navigate('DrawerClose');
-                            }
-                        }}
-                          text="BestPractices" />
-                        <DrawerMenuElement onPressFunc={() => {
-                            if (this.state.active !== 'Tutorials') {
-                                this.props.navigation.navigate('Tutorials');
-                            } else {
-                                this.props.navigation.navigate('DrawerClose');
-                            }
-                        }}
-                          text="Tutorials" />
-                        <DrawerMenuElement onPressFunc={() => {
-                            if (this.state.active !== 'Articles') {
-                                this.props.navigation.navigate('Articles');
-                            } else {
-                                this.props.navigation.navigate('DrawerClose');
-                            }
-                        }}
-                          text="Articles" />
-                        <DrawerMenuElement onPressFunc={() => {
-                            if (this.state.active !== 'Events') {
-                                this.props.navigation.navigate('Events');
-                            } else {
-                                this.props.navigation.navigate('DrawerClose');
-                            }
-                        }}
-                          text="Events" />
-                    </View>
+            <View style={styles.container}>
+                <View style={styles.userIco}>
+                    <TouchableOpacity style={styles.settingsIco} onPress={() => {
+                        this.setState({ active: 'Settings' });
+                        this.props.navigation.navigate('Settings');
+                    }
+                    }>
+                        <Icon name="cog" size={35} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 30, height: 40 }} />
+                    </TouchableOpacity>
+                    <Image
+                      style={
+                      {
+                          position: 'absolute', marginTop: 25, marginLeft: 60, width: 150, height: 150, borderRadius: 150
+                      }}
+                      source={
+                      {
+                          uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'
+                      }}
+                      />
                 </View>
+                <View>
+                    <DrawerMenuElement onPressFunc={() => {
+                        if (this.state.active !== 'ReactWall') {
+                            this.props.navigation.navigate('ReactWall');
+                        } else {
+                            this.props.navigation.navigate('DrawerClose');
+                        }
+                    }}
+                      text="ReactWall" />
+                    <DrawerMenuElement onPressFunc={() => {
+                        if (this.state.active !== 'ReactMap') {
+                            this.props.navigation.navigate('ReactMap');
+                        } else {
+                            this.props.navigation.navigate('DrawerClose');
+                        }
+                    }}
+                      text="ReactMap" />
+                    <DrawerMenuElement onPressFunc={() => {
+                        if (this.state.active !== 'BestPractices') {
+                            this.props.navigation.navigate('BestPractices');
+                        } else {
+                            this.props.navigation.navigate('DrawerClose');
+                        }
+                    }}
+                      text="BestPractices" />
+                    <DrawerMenuElement onPressFunc={() => {
+                        if (this.state.active !== 'Tutorials') {
+                            this.props.navigation.navigate('Tutorials');
+                        } else {
+                            this.props.navigation.navigate('DrawerClose');
+                        }
+                    }}
+                      text="Tutorials" />
+                    <DrawerMenuElement onPressFunc={() => {
+                        if (this.state.active !== 'Articles') {
+                            this.props.navigation.navigate('Articles');
+                        } else {
+                            this.props.navigation.navigate('DrawerClose');
+                        }
+                    }}
+                      text="Articles" />
+                    <DrawerMenuElement onPressFunc={() => {
+                        if (this.state.active !== 'Events') {
+                            this.props.navigation.navigate('Events');
+                        } else {
+                            this.props.navigation.navigate('DrawerClose');
+                        }
+                    }}
+                      text="Events" />
+                </View>
+            </View>
         );
     }
 }

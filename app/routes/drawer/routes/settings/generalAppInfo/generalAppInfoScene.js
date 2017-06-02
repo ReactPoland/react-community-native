@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { ThemeProvider } from 'react-native-material-ui';
 import Header from '../../../../../components/header';
 import LableSettings from '../../../../../components/lableSettings';
-import Container from '../../../container';
 const window = Dimensions.get('window');
 
 class generalAppInfoScene extends Component {

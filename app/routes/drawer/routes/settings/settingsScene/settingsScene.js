@@ -36,7 +36,7 @@ class SettingsScene extends Component {
                             </Text>
                             <Switch onValueChange={(value) => {
                                 this.props.dispatch(showWebView(!this.state.falseSwitchIsOn));
-                                this.setState({ falseSwitchIsOn: this.props.webViewEnable })
+                                this.setState({ falseSwitchIsOn: this.props.webViewEnable });
                             }} value={this.props.webViewEnable} />
                         </View>
                     </View>

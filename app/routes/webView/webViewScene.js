@@ -6,8 +6,15 @@ const window = Dimensions.get('window');
 
 class webViewScene extends Component {
     static propTypes = {
-        navigation: PropTypes.object
+        navigation: PropTypes.object,
+        webViewEnable: PropTypes.bool
     };
+    componentDidMount () {
+        const { params } = this.props.navigation.state;
+        if (this.props.webViewEnable) {
+            Linking.openURL(params.setUrl);
+        }
+    }
     render () {
         const { params } = this.props.navigation.state;
         const url = params.setUrl;
@@ -25,21 +32,20 @@ class webViewScene extends Component {
         if (arrLen > 2) {
             domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
         }
-        if (this.props.webViewEnable)
-        {
-            Linking.openURL(url)
+        if (this.props.webViewEnable) {
+            return (Linking.openURL(url));
+        } else {
+            return (
+                <View style={styles.webViewStyle}>
+                    <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={domain}
+                      renderRight rightIcon="external-link" navigatorRight={() => Linking.openURL(url)} />
+                    <WebView
+                      style={styles.webViewStyle}
+                      source={{ url }}
+                    />
+                </View>
+            );
         }
-        else {
-        return (
-            <View style={styles.webViewStyle}>
-                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={domain}
-                  renderRight rightIcon="external-link" navigatorRight={() => Linking.openURL(url)} />
-                <WebView
-                  style={styles.webViewStyle}
-                  source={{ url }}
-                />
-            </View>
-        );}
     }
 }
 

@@ -2,11 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
 import Header from '../../../../../components/header.js';
 import TouchableSettings from '../touchableSettings';
+import { switchWebViewEnable } from '../../../../../redux/reducers/webView';
+import { connect } from 'react-redux';
 const window = Dimensions.get('window');
 
 class SettingsScene extends Component {
+    state = {
+        falseSwitchIsOn: this.props.webViewEnable
+    };
     static propTypes = {
-        navigation: PropTypes.object
+        navigation: PropTypes.object,
+        webViewEnable: PropTypes.bool,
+        dispatch: PropTypes.func
     };
     render () {
         return (
@@ -21,7 +28,10 @@ class SettingsScene extends Component {
                             ]}>
                               Open website in App
                             </Text>
-                            <Switch />
+                            <Switch onValueChange={(value) => {
+                                this.setState({ falseSwitchIsOn: value });
+                                this.props.dispatch(switchWebViewEnable(!this.state.falseSwitchIsOn));
+                            }} value={this.state.falseSwitchIsOn} />
                         </View>
                     </View>
                     <TouchableSettings leftElement="User Info" navigator={() => this.props.navigation.navigate('UserInfo')} />
@@ -59,4 +69,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Cochin'
     }
 });
-export default SettingsScene;
+const mapStateToProps = ({ switcher }) => {
+    return {
+        webViewEnable: switcher.webViewEnable
+    };
+};
+
+export default connect(mapStateToProps)(SettingsScene);

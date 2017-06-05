@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions, WebView, Linking } from 'react-native';
 import Header from '../../components/header.js';
+import { connect } from 'react-redux';
 const window = Dimensions.get('window');
 
 class webViewScene extends Component {
@@ -8,6 +9,7 @@ class webViewScene extends Component {
         navigation: PropTypes.object
     };
     render () {
+        let display = null
         const { params } = this.props.navigation.state;
         const url = params.setUrl;
         let hostname;
@@ -23,6 +25,10 @@ class webViewScene extends Component {
         const arrLen = splitArr.length;
         if (arrLen > 2) {
             domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
+        }
+        if (this.props.webViewEnable)
+        {
+            display = Linking.openURL(url)
         }
         return (
             <View style={styles.webViewStyle}>
@@ -46,4 +52,10 @@ const styles = StyleSheet.create({
         height: window.height - 20
     }
 });
-export default webViewScene;
+const mapStateToProps = ({ switcher }) => {
+    return {
+        webViewEnable: switcher.webViewEnable
+    };
+};
+
+export default connect(mapStateToProps)(webViewScene);

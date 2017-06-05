@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         width: 35
     },
     textStyle: {
-        width: window.width - 90,
+        width: window.width - 100,
         color: 'black',
         textAlign: 'center',
         fontSize: 26

@@ -12,7 +12,7 @@ class ReactWallSceen extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Wall" />
                 <View style={styles.container}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('WebView')}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('WebView', { setUrl: 'https://www.google.pl' })} >
                         <Text style={styles.welcome}>
                           Welcome to ReactWall!
                         </Text>

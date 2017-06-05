@@ -8,7 +8,8 @@ class webViewScene extends Component {
         navigation: PropTypes.object
     };
     render () {
-        const url = 'https://google.com';
+        const { params } = this.props.navigation.state;
+        const url = params.setUrl;
         return (
             <View style={styles.webViewStyle}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={url}

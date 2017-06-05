@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Dimensions, StyleSheet } from 'react-native';
 
 const window = Dimensions.get('window');
 
 class LableSettings extends Component {
     static propTypes = {
-        navigator: PropTypes.func,
-        leftElement: PropTypes.string
+        leftElement: PropTypes.string,
+        rightElement: PropTypes.string
     };
     render () {
         return (
-            <TouchableOpacity style={styles.touchableStyle} onPress={this.props.navigator} title="User Info">
-                <View>
+            <View style={styles.touchableStyle}>
+                <View style={styles.switchElementContainer}>
                     <Text style={styles.textStyle}>
                         {this.props.leftElement}
                     </Text>
+                    <Text style={styles.textStyle}>
+                        {this.props.rightElement}
+                    </Text>
                 </View>
-            </TouchableOpacity>
+            </View>
         );
     }
 }
@@ -33,15 +36,14 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         marginTop: 10
     },
-    viewStyle: {
+    switchElementContainer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: window.width - 40
     },
     textStyle: {
-        fontSize: 20,
-        fontFamily: 'Cochin'
+        fontSize: 20
     }
 });
 

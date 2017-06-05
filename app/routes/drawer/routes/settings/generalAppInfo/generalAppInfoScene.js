@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import Header from '../../../../../components/header';
-import LableSettings from '../../../../../components/lableSettings';
+import SettingsElement from '../settingsElement';
 const window = Dimensions.get('window');
 
 class generalAppInfoScene extends Component {
@@ -16,9 +16,9 @@ class generalAppInfoScene extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title="General Info" />
                 <View style={styles.container}>
-                    <LableSettings leftElement="Version:" rightElement="0.0.1" />
-                    <LableSettings leftElement="Build:" rightElement="1" />
-                    <LableSettings leftElement="Authors:" rightElement="ReactPoland" />
+                    <SettingsElement leftElement="Version:" rightElement="0.0.1" />
+                    <SettingsElement leftElement="Build:" rightElement="1" />
+                    <SettingsElement leftElement="Authors:" rightElement="ReactPoland" />
                 </View>
             </View>
         );

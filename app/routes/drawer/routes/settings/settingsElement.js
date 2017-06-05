@@ -12,7 +12,7 @@ class LableSettings extends Component {
     render () {
         return (
             <View style={styles.touchableStyle}>
-                <View style={styles.viewStyle}>
+                <View style={styles.switchElementContainer}>
                     <Text style={styles.textStyle}>
                         {this.props.leftElement}
                     </Text>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         marginTop: 10
     },
-    viewStyle: {
+    switchElementContainer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',

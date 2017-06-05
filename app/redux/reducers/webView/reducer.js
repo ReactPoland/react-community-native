@@ -1,5 +1,5 @@
 import {
-  HIDE_DUMMY_ERROR
+  SWITCH_WEBVIEW
 } from './actions';
 
 const initialState = {
@@ -8,8 +8,7 @@ const initialState = {
 
 export default function reducer (state = initialState, action) {
     switch (action.type) {
-        case HIDE_DUMMY_ERROR:
-            console.log('change');
+        case SWITCH_WEBVIEW:
             return { ...state, webViewEnable: action.switchWebView };
         default:
             return state;

@@ -1,3 +1,3 @@
 export {
-  switchWebViewEnable
+  showWebView
 } from './actions';

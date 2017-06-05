@@ -1,8 +1,8 @@
-export const HIDE_DUMMY_ERROR = 'HIDE_DUMMY_ERROR';
+export const SWITCH_WEBVIEW = 'SWITCH_WEBVIEW';
 
-export const switchWebViewEnable = (switchWebView) => {
+export const showWebView = (switchWebView) => {
     return {
-        type: [HIDE_DUMMY_ERROR],
+        type: 'SWITCH_WEBVIEW',
         switchWebView
     };
 };

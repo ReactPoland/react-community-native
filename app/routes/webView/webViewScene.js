@@ -9,7 +9,6 @@ class webViewScene extends Component {
         navigation: PropTypes.object
     };
     render () {
-        let display = null
         const { params } = this.props.navigation.state;
         const url = params.setUrl;
         let hostname;
@@ -28,8 +27,9 @@ class webViewScene extends Component {
         }
         if (this.props.webViewEnable)
         {
-            display = Linking.openURL(url)
+            Linking.openURL(url)
         }
+        else {
         return (
             <View style={styles.webViewStyle}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={domain}
@@ -39,7 +39,7 @@ class webViewScene extends Component {
                   source={{ url }}
                 />
             </View>
-        );
+        );}
     }
 }
 
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         height: window.height - 20
     }
 });
+
 const mapStateToProps = ({ switcher }) => {
     return {
         webViewEnable: switcher.webViewEnable

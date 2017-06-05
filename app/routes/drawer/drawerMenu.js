@@ -1,44 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import {
     StyleSheet,
-    StatusBar,
     View,
     Image,
     TouchableOpacity
 } from 'react-native';
-import { ThemeProvider, Toolbar, Drawer } from 'react-native-material-ui';
-import Container from './container';
+import DrawerMenuElement from './drawerMenuElement.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-const uiTheme = {
-    palette: {
-        primaryColor: '#000',
-        accentColor: '#000',
-        canvasColor: '#B38381'
-    },
-    toolbar: {
-        container: {
-            backgroundColor: '#B38381',
-            height: 20
-        }
-    },
-    drawerSection: {
-        container: {
-            paddingVertical: 8
-        }
-    },
-    typography: {
-        buttons: {
-            fontWeight: '400',
-            fontSize: 20
-        }
-    }
-};
-
 export default class DrawerMenu extends Component {
-    constructor (props, context) {
-        super(props, context);
+    constructor (props, contextStyle) {
+        super(props, contextStyle);
         this.state = {
+            drawerElements: ['ReactWall', 'ReactMap', 'BestPractices', 'Tutorials', 'Articles', 'Events'],
             active: 'ReactWall'
         };
     }
@@ -47,140 +20,68 @@ export default class DrawerMenu extends Component {
     };
     render () {
         return (
-            <ThemeProvider uiTheme={uiTheme}>
-                <Container>
-                    <StatusBar translucent />
-                    <Toolbar />
-                    <View style={styles.container}>
-                        <Drawer style={{ container:
-                            { backgroundColor: '#B38381' }
-                        }
-                        }>
-                            <View style={styles.userIco}>
-                                <TouchableOpacity style={styles.settingsIco} onPress={() => {
-                                    this.setState({ active: 'Settings' });
-                                    this.props.navigation.navigate('Settings');
-                                }
-                                }>
-                                    <Icon name="cog" size={35} color="#000" style={{ marginLeft: 10, marginTop: 10, width: 30, height: 40 }} />
-                                </TouchableOpacity>
-                                <Image
-                                  style={
-                                  {
-                                      position: 'absolute', marginTop: 25, marginLeft: 60, width: 150, height: 150, borderRadius: 150
-                                  }}
-                                  source={
-                                  {
-                                      uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'
-                                  }}
-                                />
-                            </View>
-                            <Drawer.Section
-                              divider
-                              items={[
-                                  {
-                                      value: 'ReactWall',
-                                      active: this.state.active === 'ReactWall',
-                                      onPress: () => {
-                                          if (this.state.active !== 'ReactWall') {
-                                              this.setState({ active: 'ReactWall' });
-                                              this.props.navigation.navigate('ReactWall');
-                                          } else {
-                                              this.props.navigation.navigate('DrawerClose');
-                                          }
-                                      }
-                                  },
-                                  {
-                                      value: 'ReactMap',
-                                      active: this.state.active === 'ReactMap',
-                                      onPress: () => {
-                                          if (this.state.active !== 'ReactMap') {
-                                              this.setState({ active: 'ReactMap' });
-                                              this.props.navigation.navigate('ReactMap');
-                                          } else {
-                                              this.props.navigation.navigate('DrawerClose');
-                                          }
-                                      }
-                                  },
-                                  {
-                                      value: 'Best Practices',
-                                      active: this.state.active === 'BestPractices',
-                                      onPress: () => {
-                                          if (this.state.active !== 'BestPractices') {
-                                              this.setState({ active: 'BestPractices' });
-                                              this.props.navigation.navigate('BestPractices');
-                                          } else {
-                                              this.props.navigation.navigate('DrawerClose');
-                                          }
-                                      }
-                                  },
-                                  {
-                                      value: 'Tutorials',
-                                      active: this.state.active === 'Tutorials',
-                                      onPress: () => {
-                                          if (this.state.active !== 'Tutorials') {
-                                              this.setState({ active: 'Tutorials' });
-                                              this.props.navigation.navigate('Tutorials');
-                                          } else {
-                                              this.props.navigation.navigate('DrawerClose');
-                                          }
-                                      }
-                                  },
-                                  {
-                                      value: 'Articles',
-                                      active: this.state.active === 'Articles',
-                                      onPress: () => {
-                                          if (this.state.active !== 'Articles') {
-                                              this.setState({ active: 'Articles' });
-                                              this.props.navigation.navigate('Articles');
-                                          } else {
-                                              this.props.navigation.navigate('DrawerClose');
-                                          }
-                                      }
-                                  },
-                                  {
-                                      value: 'Events',
-                                      active: this.state.active === 'Events',
-                                      onPress: () => {
-                                          if (this.state.active !== 'Events') {
-                                              this.setState({ active: 'Events' });
-                                              this.props.navigation.navigate('Events');
-                                          } else {
-                                              this.props.navigation.navigate('DrawerClose');
-                                          }
-                                      }
-                                  }
-                              ]}
-                              />
-                        </Drawer>
-                    </View>
-                </Container>
-            </ThemeProvider>
+            <View style={styles.container}>
+                <View style={styles.userIco}>
+                    <TouchableOpacity style={styles.settingIco} onPress={() => {
+                        this.setState({ active: 'Settings' });
+                        this.props.navigation.navigate('Settings');
+                    }
+                    }>
+                        <Icon name="cog" size={35} color="#000" style={styles.cogStyle} />
+                    </TouchableOpacity>
+                    <Image
+                      style={styles.gitImg}
+                      source={
+                      {
+                          uri: 'https://avatars3.githubusercontent.com/u/23702215?v=3&s=460'
+                      }}
+                      />
+                </View>
+                <View>
+                    {this.state.drawerElements.map((item, i) => {
+                        return <DrawerMenuElement key={i} onPressFunc={() => {
+                            if (this.state.active !== item) {
+                                this.props.navigation.navigate(item);
+                                this.setState({ active: item });
+                            } else {
+                                this.props.navigation.navigate('DrawerClose');
+                            }
+                        }}
+                          text={item} />;
+                    })}
+                </View>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#B38381'
+    },
+    textStyle: {
+        marginLeft: 25,
+        fontSize: 20
+    },
+    cogStyle: {
+        marginLeft: 10,
+        marginTop: 10,
+        width: 30,
+        height: 40
+    },
+    gitImg: {
+        position: 'absolute',
+        marginTop: 25,
+        marginLeft: 60,
+        width: 150,
+        height: 150,
+        borderRadius: 150
     },
     userIco: {
         height: 200
     },
-    header: {
-        backgroundColor: '#B38381'
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5
-    },
-    settingsIco: {
+    settingIco: {
         width: 45
     }
 });

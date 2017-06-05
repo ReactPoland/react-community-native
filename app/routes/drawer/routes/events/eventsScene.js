@@ -1,15 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { COLOR, ThemeProvider } from 'react-native-material-ui';
-import Container from '../../container';
 import Header from '../../../../components/header.js';
-
-const uiTheme = {
-    palette: {
-        primaryColor: COLOR.grey500,
-        accentColor: COLOR.grey500
-    }
-};
 
 class EventSceen extends Component {
     static propTypes = {
@@ -17,16 +8,14 @@ class EventSceen extends Component {
     };
     render () {
         return (
-            <ThemeProvider uiTheme={uiTheme}>
-                <Container>
-                    <Header navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Event" />
-                    <View style={styles.container}>
-                        <Text style={styles.welcome}>
-                            Welcome to Event!
-                        </Text>
-                    </View>
-                </Container>
-            </ThemeProvider>
+            <View style={{ flex: 1 }}>
+                <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="Events" />
+                <View style={styles.container}>
+                    <Text style={styles.welcome}>
+                      Welcome to Events!!
+                    </Text>
+                </View>
+            </View>
         );
     }
 }

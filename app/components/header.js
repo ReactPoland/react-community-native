@@ -7,21 +7,36 @@ const window = Dimensions.get('window');
 class Header extends Component {
     static propTypes = {
         navigatorLeft: PropTypes.func,
+        navigatorRight: PropTypes.func,
         title: PropTypes.string,
-        leftIcon: PropTypes.string
+        leftIcon: PropTypes.string,
+        rightIcon: PropTypes.string,
+        renderRight: PropTypes.bool
     };
+    static defaultProps = {
+        renderRight: false
+    }
     render () {
+        const isRight = this.props.renderRight;
+
+        let rightButton = null;
+        if (isRight) {
+            rightButton = <TouchableOpacity onPress={this.props.navigatorRight}>
+                <Icon name={this.props.rightIcon} size={30} color="#000" style={[styles.rightElement]} />
+            </TouchableOpacity>;
+        } else {
+            rightButton = <View style={[styles.rightElement]} />;
+        }
         return (
             <View style={styles.container}>
                 <View style={styles.content}>
                     <TouchableOpacity onPress={this.props.navigatorLeft}>
                         <Icon name={this.props.leftIcon} size={30} color="#000" style={[styles.leftElement]} />
-
                     </TouchableOpacity>
-                    <Text style={styles.textStyle}>
+                    <Text numberOfLines={1} style={styles.textStyle}>
                         {this.props.title}
                     </Text>
-                    <View style={[styles.rightElement]} />
+                    {rightButton}
                 </View>
             </View>
         );
@@ -50,7 +65,7 @@ const styles = StyleSheet.create({
         width: 35
     },
     textStyle: {
-        width: 200,
+        width: window.width - 90,
         color: 'black',
         textAlign: 'center',
         fontSize: 26

@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, WebView, Linking } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { View, StyleSheet, Dimensions, WebView, Linking } from 'react-native';
+import Header from '../../components/header.js';
 const window = Dimensions.get('window');
 
 class webViewScene extends Component {
+    static propTypes = {
+        navigation: PropTypes.object
+    };
     render () {
+        const url = 'https://google.com';
         return (
             <View style={styles.webViewStyle}>
+                <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={url}
+                  renderRight rightIcon="external-link" navigatorRight={() => Linking.openURL(url)} />
                 <WebView
-                  source={{uri: params.webViewLink}}
+                  style={styles.webViewStyle}
+                  source={{ url }}
                 />
             </View>
         );
@@ -17,10 +25,10 @@ class webViewScene extends Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF',
-        height: window.height,
+        height: window.height
     },
     webViewStyle: {
-        height: window.height - 80
+        height: window.height - 20
     }
 });
 export default webViewScene;

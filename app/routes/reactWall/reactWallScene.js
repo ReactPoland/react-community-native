@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Header from '../../components/header.js';
 import PropTypes from 'prop-types';
 
@@ -12,9 +12,11 @@ class ReactWallSceen extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Wall" />
                 <View style={styles.container}>
-                    <Text style={styles.welcome}>
-                      Welcome to ReactWall!
-                    </Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('WebView')}>
+                        <Text style={styles.welcome}>
+                          Welcome to ReactWall!
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );

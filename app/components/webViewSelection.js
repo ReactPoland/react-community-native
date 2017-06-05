@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
-import WebView from '../routes/webView';
 
 class webViewComponent extends Component {
+    static propTypes = {
+        webViewEnable: PropTypes.bool,
+        setUrl: PropTypes.string,
+        onHandlePress: PropTypes.func
+    }
     goTo = () => {
         if (this.props.webViewEnable) {
-            Linking.openURL(this.props.setUrl)
+            Linking.openURL(this.props.setUrl);
         } else {
-            this.props.onHandlePress()
+            this.props.onHandlePress();
         }
     }
     render () {
@@ -23,12 +26,6 @@ class webViewComponent extends Component {
     }
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFF'
-    },
     welcome: {
         fontSize: 20,
         textAlign: 'center',

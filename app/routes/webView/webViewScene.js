@@ -7,9 +7,7 @@ class webViewScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
     };
-    render () {
-        const { params } = this.props.navigation.state;
-        const url = params.setUrl;
+    cutUrl = (url) => {
         let hostname;
         if (url.indexOf('://') > -1) {
             hostname = url.split('/')[2];
@@ -22,8 +20,13 @@ class webViewScene extends Component {
         const splitArr = domain.split('.');
         const arrLen = splitArr.length;
         if (arrLen > 2) {
-            domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
+            return (domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1]);
         }
+    }
+    render () {
+        const { params } = this.props.navigation.state;
+        const url = params.setUrl;
+        const domain = this.cutUrl(url);
         return (
             <View style={styles.webViewStyle}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={domain}

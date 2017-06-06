@@ -6,27 +6,28 @@ class webViewComponent extends Component {
     static propTypes = {
         webViewEnable: PropTypes.bool,
         setUrl: PropTypes.string,
-        onHandlePress: PropTypes.func
+        webViewHanlder: PropTypes.func,
+        content: PropTypes.string
     }
-    goTo = () => {
+    openUrl = () => {
         if (!this.props.webViewEnable) {
             Linking.openURL(this.props.setUrl);
         } else {
-            this.props.onHandlePress();
+            this.props.webViewHanlder();
         }
     }
     render () {
         return (
-            <TouchableOpacity onPress={this.goTo} >
-                <Text style={styles.welcome}>
-                    Welcome to ReactWall!
+            <TouchableOpacity onPress={this.openUrl} >
+                <Text style={styles.textStyle}>
+                    {this.props.content}
                 </Text>
             </TouchableOpacity>
         );
     }
 }
 const styles = StyleSheet.create({
-    welcome: {
+    textStyle: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10

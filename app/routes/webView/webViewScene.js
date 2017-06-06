@@ -7,7 +7,7 @@ class webViewScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
     };
-    cutUrl = (url) => {
+    getDomain = (url) => {
         let hostname;
         if (url.indexOf('://') > -1) {
             hostname = url.split('/')[2];
@@ -27,9 +27,9 @@ class webViewScene extends Component {
     render () {
         const { params } = this.props.navigation.state;
         const url = params.setUrl;
-        const domain = this.cutUrl(url);
+        const domain = this.getDomain(url);
         return (
-            <View style={styles.webViewStyle}>
+            <View style={styles.webViewContainer}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={domain}
                   renderRight rightIcon="external-link" navigatorRight={() => Linking.openURL(url)} />
                 <WebView
@@ -42,11 +42,7 @@ class webViewScene extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#FFF',
-        height: window.height
-    },
-    webViewStyle: {
+    webViewContainer: {
         height: window.height - 20
     }
 });

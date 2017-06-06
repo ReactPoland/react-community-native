@@ -22,6 +22,7 @@ class webViewScene extends Component {
         if (arrLen > 2) {
             return (domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1]);
         }
+        return domain;
     }
     render () {
         const { params } = this.props.navigation.state;

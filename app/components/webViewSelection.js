@@ -9,7 +9,7 @@ class webViewComponent extends Component {
         onHandlePress: PropTypes.func
     }
     goTo = () => {
-        if (this.props.webViewEnable) {
+        if (!this.props.webViewEnable) {
             Linking.openURL(this.props.setUrl);
         } else {
             this.props.onHandlePress();

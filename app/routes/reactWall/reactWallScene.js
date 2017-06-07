@@ -13,7 +13,7 @@ class ReactWallSceen extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Wall" />
                 <View style={styles.container}>
-                    <UrlHandler content="go to webView" setUrl={'http://google.pl'} webViewHanlder={() => this.props.navigation.navigate('WebView', { setUrl: 'https://www.google.pl' })} />
+                    <UrlHandler displayText="go to webView" setUrl={'http://google.pl'} webViewHanlder={() => this.props.navigation.navigate('WebView', { setUrl: 'https://www.google.pl' })} />
                 </View>
             </View>
         );

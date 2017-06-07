@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 
-class webViewComponent extends Component {
+class urlHandler extends Component {
     static propTypes = {
         webViewEnable: PropTypes.bool,
         setUrl: PropTypes.string,
         webViewHanlder: PropTypes.func,
-        content: PropTypes.string
+        displayText: PropTypes.string
     }
     openUrl = () => {
         if (!this.props.webViewEnable) {
@@ -20,7 +20,7 @@ class webViewComponent extends Component {
         return (
             <TouchableOpacity onPress={this.openUrl} >
                 <Text style={styles.textStyle}>
-                    {this.props.content}
+                    {this.props.displayText}
                 </Text>
             </TouchableOpacity>
         );
@@ -38,4 +38,4 @@ const mapStateToProps = ({ switcher }) => {
         webViewEnable: switcher.webViewEnable
     };
 };
-export default connect(mapStateToProps)(webViewComponent);
+export default connect(mapStateToProps)(urlHandler);

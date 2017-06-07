@@ -1,33 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions, WebView, Linking } from 'react-native';
 import Header from '../../components/header.js';
+import GetDomain from '../../utils/getDomain';
 const window = Dimensions.get('window');
 
 class webViewScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
     };
-    getDomain = (url) => {
-        let hostname;
-        if (url.indexOf('://') > -1) {
-            hostname = url.split('/')[2];
-        } else {
-            hostname = url.split('/')[0];
-        }
-        hostname = hostname.split(':')[0];
-        hostname = hostname.split('?')[0];
-        let domain = hostname;
-        const splitArr = domain.split('.');
-        const arrLen = splitArr.length;
-        if (arrLen > 2) {
-            return (domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1]);
-        }
-        return domain;
-    }
     render () {
         const { params } = this.props.navigation.state;
         const url = params.setUrl;
-        const domain = this.getDomain(url);
+        const domain = GetDomain(url);
         return (
             <View style={styles.webViewContainer}>
                 <Header leftIcon="arrow-left" navigatorLeft={() => this.props.navigation.goBack()} title={domain}

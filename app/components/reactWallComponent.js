@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import Articles from './articleContainer';
 import ArrayArticels from '../utils/articles';
 
-let articlesArray = [];
-
 class ReactWallSceen extends Component {
     static propTypes = {
         navigation: PropTypes.object
@@ -19,14 +17,13 @@ class ReactWallSceen extends Component {
     }
     componentWillMount () {
         ArrayArticels.getArticels().then((res) => {
-            articlesArray = res;
             let articelText = null;
-            const listViewArray = articlesArray.map((item, i) => {
+            const listViewArray = res.map((item, i) => {
                 if (res[i].content !== null) {
                     articelText = res[i].content.nodes[0].nodes[0].text;
                 }
                 return { title: res[i].title, text: articelText };
-            })
+            });
             this.setState({
                 dataSource:this.state.dataSource.cloneWithRows(listViewArray),
                 isLoading:false

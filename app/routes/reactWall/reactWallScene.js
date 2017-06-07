@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from '../../components/header';
-import UrlHandler from '../../components/urlHandler';
+import ReactWall from '../../components/reactWallComponent';
 import PropTypes from 'prop-types';
 
 class ReactWallSceen extends Component {
@@ -13,7 +13,7 @@ class ReactWallSceen extends Component {
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Wall" />
                 <View style={styles.container}>
-                    <UrlHandler displayText="go to webView" setUrl={'http://google.pl'} webViewHanlder={() => this.props.navigation.navigate('WebView', { setUrl: 'https://www.google.pl' })} />
+                    <ReactWall />
                 </View>
             </View>
         );

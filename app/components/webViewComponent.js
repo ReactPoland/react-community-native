@@ -2,14 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 
-class urlHandler extends Component {
+class webViewComponent extends Component {
     static propTypes = {
         webViewEnable: PropTypes.bool,
         setUrl: PropTypes.string,
-        webViewHanlder: PropTypes.func,
-        displayText: PropTypes.string
+        webViewHanlder: PropTypes.func
     }
-    openUrl = () => {
+    goTo = () => {
         if (!this.props.webViewEnable) {
             Linking.openURL(this.props.setUrl);
         } else {
@@ -18,16 +17,22 @@ class urlHandler extends Component {
     }
     render () {
         return (
-            <TouchableOpacity onPress={this.openUrl} >
-                <Text style={styles.textStyle}>
-                    {this.props.displayText}
+            <TouchableOpacity onPress={this.goTo} >
+                <Text style={styles.welcome}>
+                    Welcome to ReactWall!
                 </Text>
             </TouchableOpacity>
         );
     }
 }
 const styles = StyleSheet.create({
-    textStyle: {
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFF'
+    },
+    welcome: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10
@@ -38,4 +43,4 @@ const mapStateToProps = ({ webView }) => {
         webViewEnable: webView.webViewEnable
     };
 };
-export default connect(mapStateToProps)(urlHandler);
+export default connect(mapStateToProps)(webViewComponent);

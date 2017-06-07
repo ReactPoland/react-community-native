@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
         margin: 10
     }
 });
-const mapStateToProps = ({ switcher }) => {
+const mapStateToProps = ({ webView }) => {
     return {
-        webViewEnable: switcher.webViewEnable
+        webViewEnable: webView.webViewEnable
     };
 };
 export default connect(mapStateToProps)(urlHandler);

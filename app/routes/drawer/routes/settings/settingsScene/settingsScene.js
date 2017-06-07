@@ -6,9 +6,9 @@ import { showWebView } from '../../../../../redux/reducers/webView';
 import { connect } from 'react-redux';
 const window = Dimensions.get('window');
 
-const mapStateToProps = ({ switcher }) => {
+const mapStateToProps = ({ webView }) => {
     return {
-        webViewEnable: switcher.webViewEnable
+        webViewEnable: webView.webViewEnable
     };
 };
 

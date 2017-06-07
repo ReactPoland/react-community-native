@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import login from './login/reducer';
-import switcher from './webView/reducer';
+import webView from './webView/reducer';
 
 const reducers = combineReducers({
     login,
-    switcher
+    webView
 });
 
 // to reset data from reducers

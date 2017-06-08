@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Header from '../../../../components/header.js';
 import MapView from 'react-native-maps';
 
@@ -10,25 +10,25 @@ class ReactMapScene extends Component {
     constructor (props) {
         super(props);
         this.state = {
-                lat: 0,
-                long: 0,
-        }
+            lat: 0,
+            long: 0
+        };
     }
     componentDidMount () {
         navigator.geolocation.getCurrentPosition((position) => {
-            var lat = parseFloat(position.coords.latitude)
-            var long = parseFloat(position.coords.longitude)
-            this.setState({ lat, long })
-        })
+            const lat = parseFloat(position.coords.latitude);
+            const long = parseFloat(position.coords.longitude);
+            this.setState({ lat, long });
+        });
         this.watchID = navigator.geolocation.watchPosition((position) => {
-            var lat = parseFloat(position.coords.latitude)
-            var long = parseFloat(position.coords.longitude)
-            this.setState({ lat, long })
-        })
+            const lat = parseFloat(position.coords.latitude);
+            const long = parseFloat(position.coords.longitude);
+            this.setState({ lat, long });
+        });
     }
 
     componentWillMount () {
-        navigator.geolocation.clearWatch(this.watchID)
+        navigator.geolocation.clearWatch(this.watchID);
     }
     render () {
         return (

@@ -12,7 +12,7 @@ import Tutorials from './routes/tutorials/';
 const window = Dimensions.get('window');
 
 const drawerNavigator = DrawerNavigator({
-    Home: { screen: ReactWall },
+    ReactWall: { screen: ReactWall },
     ReactMap: { screen: ReactMap },
     Settings: { screen: Settings },
     Articles: { screen: Articles },

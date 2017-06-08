@@ -8,13 +8,13 @@ const MainAppStack = StackNavigator({
         screen: DrawerScreen,
         path: 'drawer'
     },
-    Login: {
-        screen: LoginScreen,
-        path: 'login'
-    },
     WebView: {
         screen: WebViewScreen,
         path: 'webView'
+    },
+    Login: {
+        screen: LoginScreen,
+        path: 'login'
     }
 }, {
     headerMode: 'none'

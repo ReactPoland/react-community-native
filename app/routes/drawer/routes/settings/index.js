@@ -1,6 +1,6 @@
-import SettingsScene from './settingsScene/';
-import GeneralAppInfo from './generalAppInfo/';
-import UserInfo from './userInfo/';
+import SettingsScene from './routes/settingsScene/';
+import GeneralAppInfo from './routes/generalAppInfo/';
+import UserInfo from './routes/userInfo/';
 import { StackNavigator } from 'react-navigation';
 
 const SettingsStackScene = StackNavigator({

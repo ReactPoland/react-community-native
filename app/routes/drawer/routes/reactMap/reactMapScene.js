@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Header from '../../../../components/header.js';
-import { checkPermission } from 'react-native-android-permissions';
 import MapView from 'react-native-maps';
 
 class ReactMapScene extends Component {
@@ -45,7 +44,7 @@ class ReactMapScene extends Component {
                           longitude: this.state.long,
                           latitudeDelta: 0.0092,
                           longitudeDelta: 0.0041
-                      }} showUsersLocation />
+                      }} showsUserLocation />
                 </View>
             </View>
         );

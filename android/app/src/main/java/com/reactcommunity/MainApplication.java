@@ -1,5 +1,5 @@
 package com.reactcommunity;
-
+import com.burnweb.rnpermissions.RNPermissionsPackage;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
@@ -26,7 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new VectorIconsPackage(),
-            new MapsPackage()
+            new MapsPackage(),
+            new RNPermissionsPackage()
       );
     }
   };

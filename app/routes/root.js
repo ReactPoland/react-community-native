@@ -5,17 +5,17 @@ import WebViewScreen from './webView';
 
 const MainAppStack = StackNavigator({
     Drawer: {
-      screen: DrawerScreen,
-      path: 'drawer'
+        screen: DrawerScreen,
+        path: 'drawer'
     },
     WebView: {
-      screen: WebViewScreen,
-      path: 'webView'
+        screen: WebViewScreen,
+        path: 'webView'
     },
     Login: {
         screen: LoginScreen,
         path: 'login'
-    },
+    }
 }, {
     headerMode: 'none'
 });

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ListView } from 'react-native';
 import PropTypes from 'prop-types';
-import Articles from './articleContainer';
-import ArrayArticels from '../utils/articles';
+import Articles from '../../../components/articleContainer';
+import ArrayArticels from '../../../utils/articles';
 
 class ReactWallSceen extends Component {
     static propTypes = {

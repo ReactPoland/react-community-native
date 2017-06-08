@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 
-class webViewComponent extends Component {
+class urlHandler extends Component {
     static propTypes = {
         webViewEnable: PropTypes.bool,
         setUrl: PropTypes.string,
@@ -43,4 +43,4 @@ const mapStateToProps = ({ webView }) => {
         webViewEnable: webView.webViewEnable
     };
 };
-export default connect(mapStateToProps)(webViewComponent);
+export default connect(mapStateToProps)(urlHandler);

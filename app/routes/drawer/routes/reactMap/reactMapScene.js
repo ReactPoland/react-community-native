@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from '../../../../components/header.js';
 import MapView from 'react-native-maps';
+import UsersMarkers from '../../../../utils/usersMarkers';
+import { prepareMarkers } from '../../../../utils/tools';
 
 class ReactMapScene extends Component {
     static propTypes = {
@@ -11,10 +13,19 @@ class ReactMapScene extends Component {
         super(props);
         this.state = {
             lat: 0,
-            long: 0
+            long: 0,
+            usersMarkers: [],
+            isLoading: false
         };
     }
-    componentDidMount () {
+    componentWillMount () {
+        navigator.geolocation.clearWatch(this.watchID);
+        const usersMarkers = UsersMarkers
+        .getMarkers()
+        .then((res) => {
+            this.setState({ usersMarkers: res })
+            return usersMarkers
+        })
         navigator.geolocation.getCurrentPosition((position) => {
             const lat = parseFloat(position.coords.latitude);
             const long = parseFloat(position.coords.longitude);
@@ -26,11 +37,15 @@ class ReactMapScene extends Component {
             this.setState({ lat, long });
         });
     }
-
-    componentWillMount () {
-        navigator.geolocation.clearWatch(this.watchID);
+    componentDidMount () {
     }
     render () {
+        const currentView = (this.state.isLoading) ? <View /> : this.state.usersMarkers.map((marker, i) => {
+            return (<MapView.Marker key={i}
+              {...marker}
+            />);
+          }
+        );
         return (
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Map" />
@@ -44,7 +59,9 @@ class ReactMapScene extends Component {
                           longitude: this.state.long,
                           latitudeDelta: 0.0092,
                           longitudeDelta: 0.0041
-                      }} showsUserLocation />
+                      }} showsUserLocation>
+                        {currentView}
+                    </MapView>
                 </View>
             </View>
         );

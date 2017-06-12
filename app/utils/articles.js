@@ -7,4 +7,5 @@ const articles = {
         return loadArticles;
     }
 };
+
 export default articles;

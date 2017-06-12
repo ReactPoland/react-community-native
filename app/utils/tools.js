@@ -15,7 +15,6 @@ export default function getDomain (url) {
     }
     return domain;
 }
-
 export function prepareMarkers (data) {
     return {
         title: data.name || data.title,

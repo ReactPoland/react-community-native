@@ -18,7 +18,7 @@ class ReactMapScene extends Component {
             isLoading: false
         };
     }
-    componentWillMount () {
+    componentDidMount () {
         navigator.geolocation.clearWatch(this.watchID);
         const usersMarkers = UsersMarkers
         .getMarkers()
@@ -26,26 +26,31 @@ class ReactMapScene extends Component {
             this.setState({ usersMarkers: res })
             return usersMarkers
         })
-        navigator.geolocation.getCurrentPosition((position) => {
-            const lat = parseFloat(position.coords.latitude);
-            const long = parseFloat(position.coords.longitude);
-            this.setState({ lat, long });
-        });
+        // navigator.geolocation.getCurrentPosition((position) => {
+        //     const lat = parseFloat(position.coords.latitude);
+        //     const long = parseFloat(position.coords.longitude);
+        //     this.setState({ lat, long });
+        // });
         this.watchID = navigator.geolocation.watchPosition((position) => {
             const lat = parseFloat(position.coords.latitude);
             const long = parseFloat(position.coords.longitude);
             this.setState({ lat, long });
         });
     }
-    componentDidMount () {
+    componentWillMount () {
+        navigator.geolocation.clearWatch(this.watchID);
+    }
+    currentView = () => {
+        this.state.usersMarkers.map((marker, i) => {
+            const markerPrepered = prepareMarkers(marker);
+            console.log(markerPrepered)
+            return (<MapView.Marker key={i}
+              {...markerPrepered}
+            />);
+        }
+      );
     }
     render () {
-        const currentView = (this.state.isLoading) ? <View /> : this.state.usersMarkers.map((marker, i) => {
-            return (<MapView.Marker key={i}
-              {...marker}
-            />);
-          }
-        );
         return (
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Map" />
@@ -60,7 +65,7 @@ class ReactMapScene extends Component {
                           latitudeDelta: 0.0092,
                           longitudeDelta: 0.0041
                       }} showsUserLocation>
-                        {currentView}
+                        {this.currentView()}
                     </MapView>
                 </View>
             </View>

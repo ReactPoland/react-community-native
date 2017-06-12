@@ -23,9 +23,9 @@ class ReactMapScene extends Component {
         const usersMarkers = UsersMarkers
         .getMarkers()
         .then((res) => {
-            this.setState({ usersMarkers: res })
-            return usersMarkers
-        })
+            this.setState({ usersMarkers: res });
+            return usersMarkers;
+        });
         // navigator.geolocation.getCurrentPosition((position) => {
         //     const lat = parseFloat(position.coords.latitude);
         //     const long = parseFloat(position.coords.longitude);
@@ -40,16 +40,12 @@ class ReactMapScene extends Component {
     componentWillMount () {
         navigator.geolocation.clearWatch(this.watchID);
     }
-    currentView = () => {
-        this.state.usersMarkers.map((marker, i) => {
-            const markerPrepered = prepareMarkers(marker);
-            console.log(markerPrepered)
-            return (<MapView.Marker key={i}
-              {...markerPrepered}
-            />);
-        }
-      );
-    }
+    currentView = () => (this.state.usersMarkers.map((marker, i) => {
+        const markerPrepered = prepareMarkers(marker);
+        return (<MapView.Marker key={i}
+          {...markerPrepered}
+        />);
+    }))
     render () {
         return (
             <View style={{ flex: 1 }}>

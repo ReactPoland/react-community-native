@@ -26,12 +26,13 @@ class ReactMapScene extends Component {
             this.setState({ usersMarkers: res });
             return usersMarkers;
         });
-        // navigator.geolocation.getCurrentPosition((position) => {
-        //     const lat = parseFloat(position.coords.latitude);
-        //     const long = parseFloat(position.coords.longitude);
-        //     this.setState({ lat, long });
-        // });
-        this.watchID = navigator.geolocation.watchPosition((position) => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const lat = parseFloat(position.coords.latitude);
+            const long = parseFloat(position.coords.longitude);
+            this.setState({ lat, long });
+        });
+        navigator.geolocation.watchPosition((position) => {
+            console.log(position);
             const lat = parseFloat(position.coords.latitude);
             const long = parseFloat(position.coords.longitude);
             this.setState({ lat, long });

@@ -1,5 +1,4 @@
 package com.reactcommunity;
-import com.burnweb.rnpermissions.RNPermissionsPackage;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
@@ -25,12 +24,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new VectorIconsPackage(),
-            new MapsPackage(),
-            new RNPermissionsPackage()
+          new VectorIconsPackage(),
+          new MapsPackage()
       );
     }
-  };
+  }; 
 
   @Override
   public ReactNativeHost getReactNativeHost() {

@@ -97,8 +97,8 @@ class ReactMapScene extends Component {
                       region={{
                           latitude: this.state.lat,
                           longitude: this.state.long,
-                          latitudeDelta: 0.0092,
-                          longitudeDelta: 0.0041
+                          latitudeDelta: 20,
+                          longitudeDelta: 20
                       }} showsUserLocation>
                         {this.currentView()}
                     </MapView>

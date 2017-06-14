@@ -53,8 +53,6 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-<<<<<<< HEAD
-=======
 		<string>Roboto-Black.ttf</string>
 		<string>Roboto-BlackItalic.ttf</string>
 		<string>Roboto-Bold.ttf</string>
@@ -67,7 +65,6 @@
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Thin.ttf</string>
 		<string>Roboto-ThinItalic.ttf</string>
->>>>>>> RCN-4
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
 		<string>FontAwesome.ttf</string>

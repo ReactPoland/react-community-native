@@ -6,9 +6,10 @@ class urlHandler extends Component {
     static propTypes = {
         webViewEnable: PropTypes.bool,
         setUrl: PropTypes.string,
-        webViewHanlder: PropTypes.func
+        webViewHanlder: PropTypes.func,
+        displayText: PropTypes.string
     }
-    goTo = () => {
+    openUrl = () => {
         if (!this.props.webViewEnable) {
             Linking.openURL(this.props.setUrl);
         } else {
@@ -17,9 +18,9 @@ class urlHandler extends Component {
     }
     render () {
         return (
-            <TouchableOpacity onPress={this.goTo} >
-                <Text style={styles.welcome}>
-                    Welcome to ReactWall!
+            <TouchableOpacity onPress={this.openUrl} >
+                <Text style={styles.textStyle}>
+                    {this.props.displayText}
                 </Text>
             </TouchableOpacity>
         );
@@ -31,8 +32,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFF'
-    },
-    welcome: {
+    },    
+    textStyle: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10

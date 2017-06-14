@@ -4,6 +4,7 @@ import Header from '../../../../../../components/header.js';
 import TouchableSettings from '../../components/touchableSettings';
 import { showWebView } from '../../../../../../redux/reducers/webView';
 import { connect } from 'react-redux';
+
 const window = Dimensions.get('window');
 
 const mapStateToProps = ({ webView }) => {

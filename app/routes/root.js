@@ -9,13 +9,13 @@ const MainAppStack = StackNavigator({
         path: 'drawer'
     },
     WebView: {
-      screen: WebViewScreen,
-      path: 'webView'
+        screen: WebViewScreen,
+        path: 'webView'
     },
     Login: {
         screen: LoginScreen,
         path: 'login'
-    },
+    }
 }, {
     headerMode: 'none'
 });

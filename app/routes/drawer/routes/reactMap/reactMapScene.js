@@ -20,19 +20,24 @@ class ReactMapScene extends Component {
     }
     componentDidMount () {
         navigator.geolocation.clearWatch(this.watchID);
-        const usersMarkers = UsersMarkers
-        .getMarkers()
-        .then((res) => {
-            this.setState({ usersMarkers: res });
-            return usersMarkers;
-        });
+        UsersMarkers
+          .getMarkers()
+          .then((res) => {
+              this.setState({ usersMarkers: res });
+          }, (error) => {
+              console.log(error);
+          });
         navigator.geolocation.getCurrentPosition((position) => {
             const lat = parseFloat(position.coords.latitude);
             const long = parseFloat(position.coords.longitude);
             this.setState({ lat, long });
-        });
+        }, (error) => {
+            console.log(error);
+        },
+            {
+                enableHighAccuracy: true, timeout: 20000, maximumAge: 10000
+            });
         navigator.geolocation.watchPosition((position) => {
-            console.log(position);
             const lat = parseFloat(position.coords.latitude);
             const long = parseFloat(position.coords.longitude);
             this.setState({ lat, long });

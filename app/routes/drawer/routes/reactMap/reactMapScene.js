@@ -3,7 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import Header from '../../../../components/header.js';
 import MapView from 'react-native-maps';
 import UsersMarkers from '../../../../utils/usersMarkers';
-import { prepareMarkers } from '../../../../utils/tools';
+import EventsMarkers from '../../../../utils/eventsMarkers';
+import { prepareUsersMarkers, prepareEventsMarkers } from '../../../../utils/tools';
 
 class ReactMapScene extends Component {
     static propTypes = {
@@ -15,7 +16,7 @@ class ReactMapScene extends Component {
             lat: 0,
             long: 0,
             usersMarkers: [],
-            isLoading: false
+            eventsMarkers: []
         };
     }
     componentDidMount () {
@@ -24,6 +25,13 @@ class ReactMapScene extends Component {
           .getMarkers()
           .then((res) => {
               this.setState({ usersMarkers: res });
+          }, (error) => {
+              console.log(error);
+          });
+        EventsMarkers
+          .getMarkers()
+          .then((res) => {
+              this.setState({ eventsMarkers: res });
           }, (error) => {
               console.log(error);
           });
@@ -47,8 +55,14 @@ class ReactMapScene extends Component {
         navigator.geolocation.clearWatch(this.watchID);
     }
     currentView = () => (this.state.usersMarkers.map((marker, i) => {
-        const markerPrepered = prepareMarkers(marker);
+        const markerPrepered = prepareUsersMarkers(marker);
         return (<MapView.Marker key={i}
+          {...markerPrepered}
+        />);
+    }))
+    currentView1 = () => (this.state.eventsMarkers.map((marker, i) => {
+        const markerPrepered = prepareEventsMarkers(marker);
+        return (<MapView.Marker key={i} pinColor={'#000000'}
           {...markerPrepered}
         />);
     }))
@@ -68,6 +82,7 @@ class ReactMapScene extends Component {
                           longitudeDelta: 0.0041
                       }} showsUserLocation>
                         {this.currentView()}
+                        {this.currentView1()}
                     </MapView>
                 </View>
             </View>

@@ -62,22 +62,16 @@ class ReactMapScene extends Component {
                 return (<MapView.Marker key={i}
                   {...markerPrepered}
             />);
-            }))
+            }));
         } else {
             return (this.state.eventsMarkers.map((marker, i) => {
                 const markerPrepered = prepareEventsMarkers(marker);
                 return (<MapView.Marker key={i} pinColor={'#bada55'}
                   {...markerPrepered}
                 />);
-            }))
+            }));
         }
     }
-    currentView1 = () => (this.state.eventsMarkers.map((marker, i) => {
-        const markerPrepered = prepareEventsMarkers(marker);
-        return (<MapView.Marker key={i} pinColor={'#bada55'}
-          {...markerPrepered}
-        />);
-    }))
     render () {
         return (
             <View style={{ flex: 1 }}>

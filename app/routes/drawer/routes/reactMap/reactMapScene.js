@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet, Switch } from 'react-native';
+import { View, StyleSheet, Switch, Text } from 'react-native';
 import Header from '../../../../components/header.js';
 import MapView from 'react-native-maps';
 import UsersMarkers from '../../../../utils/usersMarkers';
@@ -82,9 +82,19 @@ class ReactMapScene extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Map" />
-                <Switch onValueChange={(value) => {
-                    this.setState({ currentMarkersShow: !this.state.currentMarkersShow });
-                }} value={this.state.currentMarkersShow} />
+                <View style={styles.touchableElementStyle}>
+                    <View style={styles.switchElementContainer}>
+                        <Text style={[
+                            styles.textStyle, {
+                            }
+                        ]}>
+                          Switch Map
+                        </Text>
+                        <Switch onValueChange={(value) => {
+                            this.setState({ currentMarkersShow: !this.state.currentMarkersShow });
+                        }} value={this.state.currentMarkersShow} />
+                    </View>
+                </View>
                 <View style={styles.container}>
                     <MapView
                       style={{
@@ -115,6 +125,27 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10
+    },
+    touchableElementStyle: {
+        height: 50,
+        width: window.width,
+        backgroundColor: '#EEE',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginTop: 10,
+        marginBottom: 10
+    },
+    switchElementContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: window.width - 40
+    },
+    textStyle: {
+        fontSize: 20,
+        fontFamily: 'Cochin'
     }
 });
 

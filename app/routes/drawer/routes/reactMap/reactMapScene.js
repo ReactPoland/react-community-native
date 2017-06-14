@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Switch } from 'react-native';
 import Header from '../../../../components/header.js';
 import MapView from 'react-native-maps';
 import UsersMarkers from '../../../../utils/usersMarkers';
@@ -16,7 +16,8 @@ class ReactMapScene extends Component {
             lat: 0,
             long: 0,
             usersMarkers: [],
-            eventsMarkers: []
+            eventsMarkers: [],
+            currentMarkersShow: true
         };
     }
     componentDidMount () {
@@ -54,15 +55,26 @@ class ReactMapScene extends Component {
     componentWillMount () {
         navigator.geolocation.clearWatch(this.watchID);
     }
-    currentView = () => (this.state.usersMarkers.map((marker, i) => {
-        const markerPrepered = prepareUsersMarkers(marker);
-        return (<MapView.Marker key={i}
-          {...markerPrepered}
-        />);
-    }))
+    currentView = () => {
+        if (this.state.currentMarkersShow) {
+            return (this.state.usersMarkers.map((marker, i) => {
+                const markerPrepered = prepareUsersMarkers(marker);
+                return (<MapView.Marker key={i}
+                  {...markerPrepered}
+            />);
+            }))
+        } else {
+            return (this.state.eventsMarkers.map((marker, i) => {
+                const markerPrepered = prepareEventsMarkers(marker);
+                return (<MapView.Marker key={i} pinColor={'#bada55'}
+                  {...markerPrepered}
+                />);
+            }))
+        }
+    }
     currentView1 = () => (this.state.eventsMarkers.map((marker, i) => {
         const markerPrepered = prepareEventsMarkers(marker);
-        return (<MapView.Marker key={i} pinColor={'#000000'}
+        return (<MapView.Marker key={i} pinColor={'#bada55'}
           {...markerPrepered}
         />);
     }))
@@ -70,6 +82,9 @@ class ReactMapScene extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <Header leftIcon="bars" navigatorLeft={() => this.props.navigation.navigate('DrawerOpen')} title="React Map" />
+                <Switch onValueChange={(value) => {
+                    this.setState({ currentMarkersShow: !this.state.currentMarkersShow });
+                }} value={this.state.currentMarkersShow} />
                 <View style={styles.container}>
                     <MapView
                       style={{
@@ -82,7 +97,6 @@ class ReactMapScene extends Component {
                           longitudeDelta: 0.0041
                       }} showsUserLocation>
                         {this.currentView()}
-                        {this.currentView1()}
                     </MapView>
                 </View>
             </View>

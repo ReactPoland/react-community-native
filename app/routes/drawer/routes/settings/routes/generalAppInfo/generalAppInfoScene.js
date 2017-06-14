@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import Header from '../../../../../components/header';
-import SettingsElement from '../settingsElement';
+import Header from '../../../../../../components/header';
+import SettingsElement from '../../components/settingsElement';
 const window = Dimensions.get('window');
 
 class generalAppInfoScene extends Component {

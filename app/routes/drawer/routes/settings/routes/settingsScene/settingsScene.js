@@ -1,8 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
+<<<<<<< HEAD:app/routes/drawer/routes/settings/routes/settingsScene/settingsScene.js
+import Header from '../../../../../../components/header.js';
+import TouchableSettings from '../../components/touchableSettings';
+import { showWebView } from '../../../../../../redux/reducers/webView';
+=======
 import Header from '../../../../../components/header.js';
 import TouchableSettings from '../touchableSettings';
 import { showWebView } from '../../../../../redux/reducers/webView';
+>>>>>>> master:app/routes/drawer/routes/settings/settingsScene/settingsScene.js
 import { connect } from 'react-redux';
 const window = Dimensions.get('window');
 

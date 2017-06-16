@@ -1,10 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import { View, StyleSheet, Switch, Text } from 'react-native';
+import { View, StyleSheet, Switch, Text, Dimensions } from 'react-native';
 import Header from '../../../../components/header.js';
 import MapView from 'react-native-maps';
 import UsersMarkers from '../../../../utils/usersMarkers';
 import EventsMarkers from '../../../../utils/eventsMarkers';
 import { prepareUsersMarkers, prepareEventsMarkers } from '../../../../utils/tools';
+
+const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE = 37.78825;
+const LONGITUDE = -122.4324;
+const LATITUDE_DELTA = 20;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
 let switchPosition = false;
 
 class ReactMapScene extends Component {
@@ -14,6 +23,12 @@ class ReactMapScene extends Component {
     constructor (props) {
         super(props);
         this.state = {
+            currentRegion: {
+                latitude: LATITUDE,
+                longitude: LONGITUDE,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+            },
             lat: 0,
             long: 0,
             usersMarkers: [],
@@ -28,6 +43,7 @@ class ReactMapScene extends Component {
           .getMarkers()
           .then((res) => {
               this.setState({ usersMarkers: res });
+              this.updateMarkers(switchPosition)
           }, (error) => {
               console.log(error);
           });
@@ -39,9 +55,12 @@ class ReactMapScene extends Component {
               console.log(error);
           });
         navigator.geolocation.getCurrentPosition((position) => {
-            const lat = parseFloat(position.coords.latitude);
-            const long = parseFloat(position.coords.longitude);
-            this.setState({ lat, long });
+            this.setState({ currentRegion: {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA
+            } });
         }, (error) => {
             console.log(error);
         },
@@ -49,9 +68,12 @@ class ReactMapScene extends Component {
                 enableHighAccuracy: true, timeout: 20000, maximumAge: 10000
             });
         navigator.geolocation.watchPosition((position) => {
-            const lat = parseFloat(position.coords.latitude);
-            const long = parseFloat(position.coords.longitude);
-            this.setState({ lat, long });
+            this.setState({ currentRegion: {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA
+            } });
         });
     }
     componentWillMount () {
@@ -77,8 +99,8 @@ class ReactMapScene extends Component {
             this.setState({ markersArray })
         }
     }
-    regionChange = (region) => {
-        this.setState({ lat: region.latitude, long: region.longitude })
+    regionChange = (currentRegion) => {
+        this.setState({ currentRegion })
     }
     render () {
         return (
@@ -103,12 +125,7 @@ class ReactMapScene extends Component {
                       style={{
                           ...StyleSheet.absoluteFillObject
                       }}
-                      region={{
-                          latitude: this.state.lat,
-                          longitude: this.state.long,
-                          latitudeDelta: 20,
-                          longitudeDelta: 20
-                      }}
+                      region={this.state.currentRegion}
                       onRegionChange={this.regionChange}
                       showsUserLocation>
                         {this.state.markersArray}

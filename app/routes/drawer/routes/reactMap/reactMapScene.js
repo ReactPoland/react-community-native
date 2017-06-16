@@ -3,7 +3,9 @@ import { View, StyleSheet, Switch, Text, Dimensions } from 'react-native';
 import Header from '../../../../components/header.js';
 import UsersMarkers from '../../../../utils/usersMarkers';
 import EventsMarkers from '../../../../utils/eventsMarkers';
-import MapComponent from './components/mapComponent'
+import MapComponent from './components/mapComponent';
+import MapView from 'react-native-maps';
+import { prepareUsersMarkers, prepareEventsMarkers } from '../../../../utils/tools';
 
 const { width, height } = Dimensions.get('window');
 
@@ -14,8 +16,6 @@ const LATITUDE_DELTA = 20;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 let switchPosition = false;
-let usersMarkers = []
-let eventsMarkers = []
 
 class ReactMapScene extends Component {
     static propTypes = {
@@ -65,7 +65,7 @@ class ReactMapScene extends Component {
         UsersMarkers
           .getMarkers()
           .then((res) => {
-              usersMarkers = res
+              this.setState({ usersMarkers: res })
           }, (error) => {
               console.log(error);
           }
@@ -73,11 +73,35 @@ class ReactMapScene extends Component {
         EventsMarkers
           .getMarkers()
           .then((res) => {
-              eventsMarkers = res
+              this.setState({ eventsMarkers: res })
+              this.updateMarkers(switchPosition)
           }, (error) => {
               console.log(error);
           }
         );
+    }
+    regionChange = (currentRegion) => {
+        console.log(currentRegion)
+        this.setState({ currentRegion });
+    }
+    updateMarkers = (value) => {
+        if (value) {
+            const markersArray = this.state.usersMarkers.map((marker, i) => {
+                const markerPrepered = prepareUsersMarkers(marker);
+                return (<MapView.Marker key={i}
+                  {...markerPrepered}
+            />);
+            });
+            this.setState({ markersArray });
+        } else {
+            const markersArray = this.state.eventsMarkers.map((marker, i) => {
+                const markerPrepered = prepareEventsMarkers(marker);
+                return (<MapView.Marker key={i} pinColor={'#bada55'}
+                  {...markerPrepered}
+                />);
+            });
+            this.setState({ markersArray });
+        }
     }
     render () {
         return (
@@ -92,15 +116,16 @@ class ReactMapScene extends Component {
                           Switch Map
                         </Text>
                         <Switch onValueChange={(value) => {
+                            this.updateMarkers(value);
                             switchPosition = !switchPosition;
                         }} value={switchPosition} />
                     </View>
                 </View>
                 <View style={styles.container}>
-                    <MapComponent usersMarkers={usersMarkers}
-                      eventsMarkers={eventsMarkers}
+                    <MapComponent markers={this.state.markersArray}
                       switchMap={switchPosition}
                       region={this.state.currentRegion}
+                      updateRegion={this.regionChange}
                     />
                 </View>
             </View>

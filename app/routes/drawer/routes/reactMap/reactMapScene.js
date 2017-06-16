@@ -6,6 +6,7 @@ import UsersMarkers from '../../../../utils/usersMarkers';
 import EventsMarkers from '../../../../utils/eventsMarkers';
 import { prepareUsersMarkers, prepareEventsMarkers } from '../../../../utils/tools';
 let switchPosition = false;
+
 class ReactMapScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
@@ -56,23 +57,6 @@ class ReactMapScene extends Component {
     componentWillMount () {
         navigator.geolocation.clearWatch(this.watchID);
     }
-    currentView = () => {
-        if (this.state.currentMarkersShow) {
-            return (this.state.usersMarkers.map((marker, i) => {
-                const markerPrepered = prepareUsersMarkers(marker);
-                return (<MapView.Marker key={i}
-                  {...markerPrepered}
-            />);
-            }));
-        } else {
-            return (this.state.eventsMarkers.map((marker, i) => {
-                const markerPrepered = prepareEventsMarkers(marker);
-                return (<MapView.Marker key={i} pinColor={'#bada55'}
-                  {...markerPrepered}
-                />);
-            }));
-        }
-    }
     updateMarkers = (value) => {
         if (value)
         {
@@ -92,6 +76,9 @@ class ReactMapScene extends Component {
             })
             this.setState({ markersArray })
         }
+    }
+    regionChange = (region) => {
+        this.setState({ lat: region.latitude, long: region.longitude })
     }
     render () {
         return (
@@ -116,12 +103,14 @@ class ReactMapScene extends Component {
                       style={{
                           ...StyleSheet.absoluteFillObject
                       }}
-                      initialRegion={{
+                      region={{
                           latitude: this.state.lat,
                           longitude: this.state.long,
                           latitudeDelta: 20,
                           longitudeDelta: 20
-                      }} showsUserLocation>
+                      }}
+                      onRegionChange={this.regionChange}
+                      showsUserLocation>
                         {this.state.markersArray}
                     </MapView>
                 </View>

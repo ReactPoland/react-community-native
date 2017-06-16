@@ -39,21 +39,6 @@ class ReactMapScene extends Component {
     }
     componentDidMount () {
         navigator.geolocation.clearWatch(this.watchID);
-        UsersMarkers
-          .getMarkers()
-          .then((res) => {
-              this.setState({ usersMarkers: res }, () => this.updateMarkers(switchPosition));
-          }, (error) => {
-              console.log(error);
-          }
-        );
-        EventsMarkers
-          .getMarkers()
-          .then((res) => {
-              this.setState({ eventsMarkers: res });
-          }, (error) => {
-              console.log(error);
-          });
         navigator.geolocation.getCurrentPosition((position) => {
             this.setState({ currentRegion: {
                 latitude: position.coords.latitude,
@@ -78,6 +63,23 @@ class ReactMapScene extends Component {
     }
     componentWillMount () {
         navigator.geolocation.clearWatch(this.watchID);
+        UsersMarkers
+          .getMarkers()
+          .then((res) => {
+              this.setState({ usersMarkers: res });
+          }, (error) => {
+              console.log(error);
+          }
+        )
+        EventsMarkers
+          .getMarkers()
+          .then((res) => {
+              this.setState({ eventsMarkers: res });
+              this.updateMarkers(switchPosition);
+          }, (error) => {
+              console.log(error);
+          }
+        );
     }
     updateMarkers = (value) => {
         if (value) {

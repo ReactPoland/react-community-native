@@ -27,7 +27,7 @@ class ReactMapScene extends Component {
                 latitude: LATITUDE,
                 longitude: LONGITUDE,
                 latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA
             },
             lat: 0,
             long: 0,
@@ -42,11 +42,11 @@ class ReactMapScene extends Component {
         UsersMarkers
           .getMarkers()
           .then((res) => {
-              this.setState({ usersMarkers: res });
-              this.updateMarkers(switchPosition)
+              this.setState({ usersMarkers: res }, () => this.updateMarkers(switchPosition));
           }, (error) => {
               console.log(error);
-          });
+          }
+        );
         EventsMarkers
           .getMarkers()
           .then((res) => {
@@ -80,27 +80,26 @@ class ReactMapScene extends Component {
         navigator.geolocation.clearWatch(this.watchID);
     }
     updateMarkers = (value) => {
-        if (value)
-        {
+        if (value) {
             const markersArray = this.state.usersMarkers.map((marker, i) => {
                 const markerPrepered = prepareUsersMarkers(marker);
                 return (<MapView.Marker key={i}
                   {...markerPrepered}
             />);
-            })
-            this.setState({ markersArray })
+            });
+            this.setState({ markersArray });
         } else {
             const markersArray = this.state.eventsMarkers.map((marker, i) => {
                 const markerPrepered = prepareEventsMarkers(marker);
                 return (<MapView.Marker key={i} pinColor={'#bada55'}
                   {...markerPrepered}
                 />);
-            })
-            this.setState({ markersArray })
+            });
+            this.setState({ markersArray });
         }
     }
     regionChange = (currentRegion) => {
-        this.setState({ currentRegion })
+        this.setState({ currentRegion });
     }
     render () {
         return (
@@ -115,8 +114,8 @@ class ReactMapScene extends Component {
                           Switch Map
                         </Text>
                         <Switch onValueChange={(value) => {
-                            this.updateMarkers(value)
-                            switchPosition = !switchPosition
+                            this.updateMarkers(value);
+                            switchPosition = !switchPosition;
                         }} value={switchPosition} />
                     </View>
                 </View>

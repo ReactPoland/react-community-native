@@ -5,7 +5,7 @@ import MapView from 'react-native-maps';
 import UsersMarkers from '../../../../utils/usersMarkers';
 import EventsMarkers from '../../../../utils/eventsMarkers';
 import { prepareUsersMarkers, prepareEventsMarkers } from '../../../../utils/tools';
-
+let switchPosition = false;
 class ReactMapScene extends Component {
     static propTypes = {
         navigation: PropTypes.object
@@ -17,7 +17,8 @@ class ReactMapScene extends Component {
             long: 0,
             usersMarkers: [],
             eventsMarkers: [],
-            currentMarkersShow: true
+            currentMarkersShow: true,
+            markersArray: []
         };
     }
     componentDidMount () {
@@ -72,6 +73,26 @@ class ReactMapScene extends Component {
             }));
         }
     }
+    updateMarkers = (value) => {
+        if (value)
+        {
+            const markersArray = this.state.usersMarkers.map((marker, i) => {
+                const markerPrepered = prepareUsersMarkers(marker);
+                return (<MapView.Marker key={i}
+                  {...markerPrepered}
+            />);
+            })
+            this.setState({ markersArray })
+        } else {
+            const markersArray = this.state.eventsMarkers.map((marker, i) => {
+                const markerPrepered = prepareEventsMarkers(marker);
+                return (<MapView.Marker key={i} pinColor={'#bada55'}
+                  {...markerPrepered}
+                />);
+            })
+            this.setState({ markersArray })
+        }
+    }
     render () {
         return (
             <View style={{ flex: 1 }}>
@@ -85,8 +106,9 @@ class ReactMapScene extends Component {
                           Switch Map
                         </Text>
                         <Switch onValueChange={(value) => {
-                            this.setState({ currentMarkersShow: !this.state.currentMarkersShow });
-                        }} value={this.state.currentMarkersShow} />
+                            this.updateMarkers(value)
+                            switchPosition = !switchPosition
+                        }} value={switchPosition} />
                     </View>
                 </View>
                 <View style={styles.container}>
@@ -94,13 +116,13 @@ class ReactMapScene extends Component {
                       style={{
                           ...StyleSheet.absoluteFillObject
                       }}
-                      region={{
+                      initialRegion={{
                           latitude: this.state.lat,
                           longitude: this.state.long,
                           latitudeDelta: 20,
                           longitudeDelta: 20
                       }} showsUserLocation>
-                        {this.currentView()}
+                        {this.state.markersArray}
                     </MapView>
                 </View>
             </View>

@@ -33,14 +33,13 @@ class ReactMapScene extends Component {
         this.props.dispatch(getEvents());
     }
     componentWillReceiveProps (nextProps) {
-        if (Array.isArray(this.props.usersMarkers) && Array.isArray(this.props.eventsMarkers)) {
-            this.updateMarkers(switchPosition);
-            console.log('is Array');
+        if (Array.isArray(nextProps.usersMarkers) && Array.isArray(nextProps.eventsMarkers)) {
+            this.updateMarkers(switchPosition, nextProps);
         }
     }
-    updateMarkers = (value) => {
+    updateMarkers = (value, nextProps) => {
         if (value) {
-            const markersArray = this.props.usersMarkers.map((marker, i) => {
+            const markersArray = nextProps.usersMarkers.map((marker, i) => {
                 const markerPrepered = prepareUsersMarkers(marker);
                 return (<MapView.Marker key={i}
                   {...markerPrepered}
@@ -48,7 +47,7 @@ class ReactMapScene extends Component {
             });
             this.setState({ markersArray });
         } else {
-            const markersArray = this.props.eventsMarkers.map((marker, i) => {
+            const markersArray = nextProps.eventsMarkers.map((marker, i) => {
                 const markerPrepered = prepareEventsMarkers(marker);
                 return (<MapView.Marker key={i} pinColor={'#bada55'}
                   {...markerPrepered}
@@ -70,7 +69,7 @@ class ReactMapScene extends Component {
                           Switch Map
                         </Text>
                         <Switch onValueChange={(value) => {
-                            this.updateMarkers(value);
+                            this.updateMarkers(value, this.props);
                             switchPosition = !switchPosition;
                         }} value={switchPosition} />
                     </View>

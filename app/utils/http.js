@@ -1,4 +1,4 @@
-const baseUrl = 'xxx';
+// const baseUrl = 'xxx';
 
 function apiHandler (method) {
     switch (method) {
@@ -12,7 +12,7 @@ function apiHandler (method) {
 }
 
 function get (url, accesstoken) {
-    return fetch(`${baseUrl}${url}`, {
+    return fetch(`${url}`, {
         method: 'GET',
         headers: {
             'Authorization': `JWT ${accesstoken}`,
@@ -39,7 +39,7 @@ function post (url, accesstoken, data) {
         headers['Authorization'] = `JWT ${accesstoken}`;
     }
     console.info('JSON.stringify(data)', JSON.stringify(data));
-    return fetch(`${baseUrl}${url}`, {
+    return fetch(`${url}`, {
         method: 'POST',
         headers,
         body: JSON.stringify(data)

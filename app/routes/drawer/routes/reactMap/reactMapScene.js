@@ -1,17 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Switch, Text } from 'react-native';
 import Header from '../../../../components/header.js';
-import UsersMarkers from './utils/usersMarkers';
-import EventsMarkers from './utils/eventsMarkers';
 import MapComponent from './components/mapComponent';
 import MapView from 'react-native-maps';
+import { connect } from 'react-redux';
+import { getUsers, getEvents } from '../../../../redux/reducers/reactMap';
 import { prepareUsersMarkers, prepareEventsMarkers } from './utils/tools';
 
 let switchPosition = false;
 
 class ReactMapScene extends Component {
     static propTypes = {
-        navigation: PropTypes.object
+        navigation: PropTypes.object,
+        usersMarkers: PropTypes.array,
+        eventsMarkers: PropTypes.array,
+        dispatch: PropTypes.func
     };
     constructor (props) {
         super(props);
@@ -22,28 +25,19 @@ class ReactMapScene extends Component {
             markersArray: []
         };
     }
-    componentWillMount () {
-        UsersMarkers
-          .getMarkers()
-          .then((res) => {
-              this.setState({ usersMarkers: res });
-          }, (error) => {
-              console.log(error);
-          }
-        );
-        EventsMarkers
-          .getMarkers()
-          .then((res) => {
-              this.setState({ eventsMarkers: res });
-              this.updateMarkers(switchPosition);
-          }, (error) => {
-              console.log(error);
-          }
-        );
+    componentDidMount () {
+        this.handleData();
+    }
+    handleData = () => {
+        this.props.dispatch(getUsers());
+        this.props.dispatch(getEvents());
+        setInterval(() => {
+            this.updateMarkers(switchPosition);
+        }, 5000);
     }
     updateMarkers = (value) => {
         if (value) {
-            const markersArray = this.state.usersMarkers.map((marker, i) => {
+            const markersArray = this.props.usersMarkers.map((marker, i) => {
                 const markerPrepered = prepareUsersMarkers(marker);
                 return (<MapView.Marker key={i}
                   {...markerPrepered}
@@ -51,7 +45,7 @@ class ReactMapScene extends Component {
             });
             this.setState({ markersArray });
         } else {
-            const markersArray = this.state.eventsMarkers.map((marker, i) => {
+            const markersArray = this.props.eventsMarkers.map((marker, i) => {
                 const markerPrepered = prepareEventsMarkers(marker);
                 return (<MapView.Marker key={i} pinColor={'#bada55'}
                   {...markerPrepered}
@@ -125,4 +119,11 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ReactMapScene;
+const mapStateToProps = ({ reactMap }) => {
+    return {
+        usersMarkers: reactMap.usersMarkers,
+        eventsMarkers: reactMap.eventsMarkers
+    };
+};
+
+export default connect(mapStateToProps)(ReactMapScene);

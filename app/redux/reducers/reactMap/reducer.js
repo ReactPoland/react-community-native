@@ -14,14 +14,14 @@ export default function reducer (state = initialState, action) {
         case GET_USERS_REQUEST:
             return { ...state, usersMarkers: null };
         case GET_USERS_SUCCESS:
-            return { ...state, usersMarkers: action.response.users };
+            return { ...state, usersMarkers: action.response.message };
         case GET_USERS_FAILURE:
             return { ...state, error: action.error };
 
         case GET_EVENTS_REQUEST:
             return { ...state, eventsMarkers: null };
         case GET_EVENTS_SUCCESS:
-            return { ...state, eventsMarkers: action.response.events };
+            return { ...state, eventsMarkers: action.response.message };
         case GET_EVENTS_FAILURE:
             return { ...state, error: action.error };
         default:

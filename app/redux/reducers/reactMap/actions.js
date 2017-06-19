@@ -11,14 +11,15 @@ export const GET_EVENTS_FAILURE = 'GET_EVENTS_FAILURE';
 export const getUsers = () => ({
     [CALL_API]: {
         types: [GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILURE],
-        endpoint: '/getToken',
-        method: 'POST'
+        endpoint: 'https://react-community-stage.herokuapp.com/api/map/loadMarkers/',
+        method: 'GET'
     }
 });
+
 export const getEvents = () => ({
     [CALL_API]: {
         types: [GET_EVENTS_REQUEST, GET_EVENTS_SUCCESS, GET_EVENTS_FAILURE],
-        endpoint: '/getToken',
-        method: 'POST'
+        endpoint: 'https://react-community-stage.herokuapp.com/api/event/loadEvents/',
+        method: 'GET'
     }
 });

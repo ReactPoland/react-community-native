@@ -31,15 +31,13 @@ class ReactMapScene extends Component {
     handleData = () => {
         this.props.dispatch(getUsers());
         this.props.dispatch(getEvents());
-        setInterval(() => {
-            this.updateMarkers(switchPosition);
-        }, 3000);
     }
-    // componentWillReceiveProps (nextProps) {
-    //     if (nextProps.usersMarkers !== null) {
-    //         console.log(nextProps);
-    //     }
-    // }
+    componentWillReceiveProps (nextProps) {
+        if (Array.isArray(this.props.usersMarkers) && Array.isArray(this.props.eventsMarkers)) {
+            this.updateMarkers(switchPosition);
+            console.log('is Array');
+        }
+    }
     updateMarkers = (value) => {
         if (value) {
             const markersArray = this.props.usersMarkers.map((marker, i) => {

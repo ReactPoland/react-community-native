@@ -4,10 +4,8 @@ import Header from 'app/components/header.js';
 import MapComponent from './components/mapComponent';
 import MapView from 'react-native-maps';
 import { connect } from 'react-redux';
-import { getUsers, getEvents } from 'app/redux/reducers/reactMap';
+import { getUsers, getEvents, switchMapMarkers } from 'app/redux/reducers/reactMap';
 import { prepareUsersMarkers, prepareEventsMarkers } from './utils/tools';
-
-let switchPosition = false;
 
 class ReactMapScene extends Component {
     static propTypes = {
@@ -22,7 +20,8 @@ class ReactMapScene extends Component {
             usersMarkers: [],
             eventsMarkers: [],
             currentMarkersShow: true,
-            markersArray: []
+            markersArray: [],
+            test: true
         };
     }
     componentDidMount () {
@@ -34,7 +33,7 @@ class ReactMapScene extends Component {
     }
     componentWillReceiveProps (nextProps) {
         if (Array.isArray(nextProps.usersMarkers) && Array.isArray(nextProps.eventsMarkers)) {
-            this.updateMarkers(switchPosition, nextProps);
+            this.updateMarkers(this.state.test, nextProps);
         }
     }
     updateMarkers = (value, nextProps) => {
@@ -69,14 +68,15 @@ class ReactMapScene extends Component {
                           Switch Map
                         </Text>
                         <Switch onValueChange={(value) => {
+                            this.props.dispatch(switchMapMarkers(value));
+                            this.setState({ test: value })
                             this.updateMarkers(value, this.props);
-                            switchPosition = !switchPosition;
-                        }} value={switchPosition} />
+                        }} value={this.state.test} />
                     </View>
                 </View>
                 <View style={styles.container}>
                     <MapComponent markers={this.state.markersArray}
-                      switchMap={switchPosition}
+                      switchMap={this.state.test}
                       region={this.state.currentRegion}
                       updateRegion={this.regionChange}
                     />
@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = ({ reactMap }) => {
     return {
         usersMarkers: reactMap.usersMarkers,
-        eventsMarkers: reactMap.eventsMarkers
+        eventsMarkers: reactMap.eventsMarkers,
+        switchMapMarkersPosition: reactMap.switchMapPosition
     };
 };
 

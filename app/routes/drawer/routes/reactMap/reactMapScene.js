@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Switch, Text } from 'react-native';
 import Header from '../../../../components/header.js';
-import UsersMarkers from '../../../../utils/usersMarkers';
-import EventsMarkers from '../../../../utils/eventsMarkers';
+import UsersMarkers from './utils/usersMarkers';
+import EventsMarkers from './utils/eventsMarkers';
 import MapComponent from './components/mapComponent';
 import MapView from 'react-native-maps';
-import { prepareUsersMarkers, prepareEventsMarkers } from '../../../../utils/tools';
+import { prepareUsersMarkers, prepareEventsMarkers } from './utils/tools';
 
 let switchPosition = false;
 
@@ -26,16 +26,16 @@ class ReactMapScene extends Component {
         UsersMarkers
           .getMarkers()
           .then((res) => {
-              this.setState({ usersMarkers: res })
+              this.setState({ usersMarkers: res });
           }, (error) => {
               console.log(error);
           }
-        )
+        );
         EventsMarkers
           .getMarkers()
           .then((res) => {
-              this.setState({ eventsMarkers: res })
-              this.updateMarkers(switchPosition)
+              this.setState({ eventsMarkers: res });
+              this.updateMarkers(switchPosition);
           }, (error) => {
               console.log(error);
           }

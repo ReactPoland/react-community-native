@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Header from '../../components/header';
+import Header from 'app/components/header';
 import ReactWall from './components/reactWallComponent';
 import PropTypes from 'prop-types';
 

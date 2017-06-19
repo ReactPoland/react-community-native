@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Switch, Text } from 'react-native';
-import Header from '../../../../components/header.js';
+import Header from 'app/components/header.js';
 import MapComponent from './components/mapComponent';
 import MapView from 'react-native-maps';
 import { connect } from 'react-redux';
-import { getUsers, getEvents } from '../../../../redux/reducers/reactMap';
+import { getUsers, getEvents } from 'app/redux/reducers/reactMap';
 import { prepareUsersMarkers, prepareEventsMarkers } from './utils/tools';
 
 let switchPosition = false;
@@ -33,8 +33,13 @@ class ReactMapScene extends Component {
         this.props.dispatch(getEvents());
         setInterval(() => {
             this.updateMarkers(switchPosition);
-        }, 5000);
+        }, 3000);
     }
+    // componentWillReceiveProps (nextProps) {
+    //     if (nextProps.usersMarkers !== null) {
+    //         console.log(nextProps);
+    //     }
+    // }
     updateMarkers = (value) => {
         if (value) {
             const markersArray = this.props.usersMarkers.map((marker, i) => {

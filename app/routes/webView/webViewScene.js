@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions, WebView, Linking } from 'react-native';
-import Header from '../../components/header.js';
-import GetDomain from '../../utils/tools';
+import Header from 'app/components/header.js';
+import GetDomain from 'app/utils/tools';
 const window = Dimensions.get('window');
 
 class webViewScene extends Component {

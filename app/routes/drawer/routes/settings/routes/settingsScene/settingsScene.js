@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, Switch, Dimensions } from 'react-native';
-import Header from '../../../../../../components/header.js';
+import Header from 'app/components/header.js';
 import TouchableSettings from '../../components/touchableSettings';
-import { showWebView } from '../../../../../../redux/reducers/webView';
+import { showWebView } from 'app/redux/reducers/webView';
 import { connect } from 'react-redux';
 
 const window = Dimensions.get('window');

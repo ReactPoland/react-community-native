@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import Header from '../../../../../../components/header';
+import Header from 'app/components/header';
 import SettingsElement from '../../components/settingsElement';
 const window = Dimensions.get('window');
 

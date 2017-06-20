@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Header from '../../../../components/header.js';
+import Header from 'app/components/header.js';
 
 class ArticlesScene extends Component {
     static propTypes = {

@@ -12,7 +12,8 @@ class ReactMapScene extends Component {
         navigation: PropTypes.object,
         usersMarkers: PropTypes.array,
         eventsMarkers: PropTypes.array,
-        dispatch: PropTypes.func
+        dispatch: PropTypes.func,
+        switchMapMarkersPosition: PropTypes.bool
     };
     constructor (props) {
         super(props);
@@ -20,8 +21,7 @@ class ReactMapScene extends Component {
             usersMarkers: [],
             eventsMarkers: [],
             currentMarkersShow: true,
-            markersArray: [],
-            test: true
+            markersArray: []
         };
     }
     componentDidMount () {
@@ -33,11 +33,14 @@ class ReactMapScene extends Component {
     }
     componentWillReceiveProps (nextProps) {
         if (Array.isArray(nextProps.usersMarkers) && Array.isArray(nextProps.eventsMarkers)) {
-            this.updateMarkers(this.state.test, nextProps);
+            this.updateMarkers(nextProps);
+        }
+        if (nextProps.switchMapMarkersPosition !== this.props.switchMapMarkersPosition) {
+            this.updateMarkers(nextProps);
         }
     }
-    updateMarkers = (value, nextProps) => {
-        if (value) {
+    updateMarkers = (nextProps) => {
+        if (nextProps.switchMapMarkersPosition) {
             const markersArray = nextProps.usersMarkers.map((marker, i) => {
                 const markerPrepered = prepareUsersMarkers(marker);
                 return (<MapView.Marker key={i}
@@ -69,9 +72,7 @@ class ReactMapScene extends Component {
                         </Text>
                         <Switch onValueChange={(value) => {
                             this.props.dispatch(switchMapMarkers(value));
-                            this.setState({ test: value })
-                            this.updateMarkers(value, this.props);
-                        }} value={this.state.test} />
+                        }} value={this.props.switchMapMarkersPosition} />
                     </View>
                 </View>
                 <View style={styles.container}>

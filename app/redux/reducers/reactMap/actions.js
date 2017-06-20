@@ -7,11 +7,12 @@ export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
 export const GET_EVENTS_REQUEST = 'GET_EVENTS_REQUEST';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_EVENTS_FAILURE = 'GET_EVENTS_FAILURE';
+
 export const SWITCH_MAP_MARKERS = 'SWITCH_MAP_MARKERS';
 
 export const switchMapMarkers = (switchMap) => {
     return {
-        type: 'SWITCH_WEBVIEW',
+        type: 'SWITCH_MAP_MARKERS',
         switchMap
     };
 };

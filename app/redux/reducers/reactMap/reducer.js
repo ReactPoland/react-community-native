@@ -15,6 +15,7 @@ export default function reducer (state = initialState, action) {
     switch (action.type) {
         case SWITCH_MAP_MARKERS:
             return { ...state, switchMapPosition: action.switchMap };
+
         case GET_USERS_REQUEST:
             return { ...state, usersMarkers: null };
         case GET_USERS_SUCCESS:
@@ -28,6 +29,7 @@ export default function reducer (state = initialState, action) {
             return { ...state, eventsMarkers: action.response.message };
         case GET_EVENTS_FAILURE:
             return { ...state, error: action.error };
+
         default:
             return state;
     }

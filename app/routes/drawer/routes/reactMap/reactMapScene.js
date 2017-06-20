@@ -31,21 +31,20 @@ class ReactMapScene extends Component {
         this.props.dispatch(getEvents());
     }
     componentWillReceiveProps (nextProps) {
-        if (Array.isArray(nextProps.usersMarkers) && Array.isArray(nextProps.eventsMarkers)) {
-            this.handleMarkers(nextProps);
-        }
+        this.handleMarkers(nextProps);
     }
     handleMarkers = (nextProps) => {
-        let markersArray = null;
-        if (this.state.switchMapMarkersPosition) {
-            markersArray = nextProps.usersMarkers.map((marker, i) => {
-                return this.createMarkers(marker, i)
-            });
-        } else {
-            markersArray = nextProps.eventsMarkers.map((marker, i) => {
-                return this.createMarkers(marker, i)
-            });
+        const { usersMarkers, eventsMarkers } = nextProps;
+        const { switchMapMarkersPosition } = this.state;
+
+        if (!Array.isArray(usersMarkers) || !Array.isArray(eventsMarkers)) {
+            return;
         }
+
+        const markersData = (switchMapMarkersPosition) ? usersMarkers : eventsMarkers;
+        const markersArray = markersData.map((marker, i) => {
+            return this.createMarkers(marker, i);
+        });
         this.setState({ markersArray });
     }
     createMarkers = (marker, i) => {

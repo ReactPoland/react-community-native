@@ -1,11 +1,9 @@
 import {
   GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILURE,
-  GET_EVENTS_REQUEST, GET_EVENTS_SUCCESS, GET_EVENTS_FAILURE,
-  SWITCH_MAP_MARKERS
+  GET_EVENTS_REQUEST, GET_EVENTS_SUCCESS, GET_EVENTS_FAILURE
 } from './actions';
 
 const initialState = {
-    switchMapPosition: true,
     usersMarkers: [],
     eventsMarkers: [],
     error: null
@@ -13,9 +11,6 @@ const initialState = {
 
 export default function reducer (state = initialState, action) {
     switch (action.type) {
-        case SWITCH_MAP_MARKERS:
-            return { ...state, switchMapPosition: action.switchMap };
-
         case GET_USERS_REQUEST:
             return { ...state, usersMarkers: null };
         case GET_USERS_SUCCESS:

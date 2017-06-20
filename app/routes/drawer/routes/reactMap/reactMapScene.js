@@ -4,7 +4,7 @@ import Header from 'app/components/header.js';
 import MapComponent from './components/mapComponent';
 import MapView from 'react-native-maps';
 import { connect } from 'react-redux';
-import { getUsers, getEvents, switchMapMarkers } from 'app/redux/reducers/reactMap';
+import { getUsers, getEvents } from 'app/redux/reducers/reactMap';
 import { prepareUsersMarkers, prepareEventsMarkers } from './utils/tools';
 
 class ReactMapScene extends Component {
@@ -12,16 +12,15 @@ class ReactMapScene extends Component {
         navigation: PropTypes.object,
         usersMarkers: PropTypes.array,
         eventsMarkers: PropTypes.array,
-        dispatch: PropTypes.func,
-        switchMapMarkersPosition: PropTypes.bool
+        dispatch: PropTypes.func
     };
     constructor (props) {
         super(props);
         this.state = {
             usersMarkers: [],
             eventsMarkers: [],
-            currentMarkersShow: true,
-            markersArray: []
+            markersArray: [],
+            switchMapMarkersPosition: false
         };
     }
     componentDidMount () {
@@ -33,14 +32,11 @@ class ReactMapScene extends Component {
     }
     componentWillReceiveProps (nextProps) {
         if (Array.isArray(nextProps.usersMarkers) && Array.isArray(nextProps.eventsMarkers)) {
-            this.updateMarkers(nextProps);
-        }
-        if (nextProps.switchMapMarkersPosition !== this.props.switchMapMarkersPosition) {
-            this.updateMarkers(nextProps);
+            this.handleMarkers(this.state.switchMapMarkersPosition, nextProps);
         }
     }
-    updateMarkers = (nextProps) => {
-        if (nextProps.switchMapMarkersPosition) {
+    handleMarkers = (value, nextProps) => {
+        if (value) {
             const markersArray = nextProps.usersMarkers.map((marker, i) => {
                 const markerPrepered = prepareUsersMarkers(marker);
                 return (<MapView.Marker key={i}
@@ -71,8 +67,9 @@ class ReactMapScene extends Component {
                           Switch Map
                         </Text>
                         <Switch onValueChange={(value) => {
-                            this.props.dispatch(switchMapMarkers(value));
-                        }} value={this.props.switchMapMarkersPosition} />
+                            this.setState({ switchMapMarkersPosition: value });
+                            this.handleMarkers(value, this.props);
+                        }} value={this.state.switchMapMarkersPosition} />
                     </View>
                 </View>
                 <View style={styles.container}>
@@ -125,8 +122,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = ({ reactMap }) => {
     return {
         usersMarkers: reactMap.usersMarkers,
-        eventsMarkers: reactMap.eventsMarkers,
-        switchMapMarkersPosition: reactMap.switchMapPosition
+        eventsMarkers: reactMap.eventsMarkers
     };
 };
 

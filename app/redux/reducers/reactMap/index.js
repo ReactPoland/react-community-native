@@ -1,5 +1,4 @@
 export {
   getUsers,
-  getEvents,
-  switchMapMarkers
+  getEvents
 } from './actions';

@@ -5,7 +5,7 @@ import MapComponent from './components/mapComponent';
 import MapView from 'react-native-maps';
 import { connect } from 'react-redux';
 import { getUsers, getEvents } from 'app/redux/reducers/reactMap';
-import { prepareUsersMarkers, prepareEventsMarkers } from './utils/tools';
+import { prepareMarkers } from './utils/tools';
 
 class ReactMapScene extends Component {
     static propTypes = {
@@ -32,27 +32,27 @@ class ReactMapScene extends Component {
     }
     componentWillReceiveProps (nextProps) {
         if (Array.isArray(nextProps.usersMarkers) && Array.isArray(nextProps.eventsMarkers)) {
-            this.handleMarkers(this.state.switchMapMarkersPosition, nextProps);
+            this.handleMarkers(nextProps);
         }
     }
-    handleMarkers = (value, nextProps) => {
-        if (value) {
-            const markersArray = nextProps.usersMarkers.map((marker, i) => {
-                const markerPrepered = prepareUsersMarkers(marker);
-                return (<MapView.Marker key={i}
-                  {...markerPrepered}
-            />);
+    handleMarkers = (nextProps) => {
+        let markersArray = null;
+        if (this.state.switchMapMarkersPosition) {
+            markersArray = nextProps.usersMarkers.map((marker, i) => {
+                return this.createMarkers(marker, i)
             });
-            this.setState({ markersArray });
         } else {
-            const markersArray = nextProps.eventsMarkers.map((marker, i) => {
-                const markerPrepered = prepareEventsMarkers(marker);
-                return (<MapView.Marker key={i} pinColor={'#bada55'}
-                  {...markerPrepered}
-                />);
+            markersArray = nextProps.eventsMarkers.map((marker, i) => {
+                return this.createMarkers(marker, i)
             });
-            this.setState({ markersArray });
         }
+        this.setState({ markersArray });
+    }
+    createMarkers = (marker, i) => {
+        const markerPrepered = prepareMarkers(marker);
+        return (<MapView.Marker key={i} pinColor={'#bada55'}
+          {...markerPrepered}
+        />);
     }
     render () {
         return (
@@ -68,7 +68,7 @@ class ReactMapScene extends Component {
                         </Text>
                         <Switch onValueChange={(value) => {
                             this.setState({ switchMapMarkersPosition: value });
-                            this.handleMarkers(value, this.props);
+                            this.handleMarkers(this.props);
                         }} value={this.state.switchMapMarkersPosition} />
                     </View>
                 </View>
